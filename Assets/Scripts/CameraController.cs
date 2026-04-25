@@ -11,7 +11,7 @@ public class CameraController : Singleton<CameraController>
     {
         base.Awake();
 
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
