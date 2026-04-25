@@ -1,0 +1,441 @@
+fileFormatVersion: 2
+guid: 83e42189d5785154fa24e023f2910aea
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7084850825422894688
+    second: Armarios_0
+  - first:
+      213: 3614137805340956568
+    second: Armarios_1
+  - first:
+      213: 6237833590021033981
+    second: Armarios_2
+  - first:
+      213: -2586772105522490170
+    second: Armarios_3
+  - first:
+      213: -6396293260455901734
+    second: Armarios_4
+  - first:
+      213: 5001692970514051361
+    second: Armarios_5
+  - first:
+      213: 1183905350253943624
+    second: Armarios_6
+  - first:
+      213: -3512586249168300176
+    second: Armarios_7
+  - first:
+      213: -5577903302746160128
+    second: Armarios_8
+  - first:
+      213: -1661937113436131795
+    second: Armarios_9
+  - first:
+      213: 3709770216840697658
+    second: Armarios_10
+  - first:
+      213: 7132653277792024117
+    second: Armarios_11
+  - first:
+      213: 3815449115593721869
+    second: Armarios_12
+  - first:
+      213: 6293627684783492193
+    second: Armarios_13
+  - first:
+      213: 1840587240952894761
+    second: Armarios_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Armarios_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1335
+        width: 167
+        height: 263
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 066f6ffd942725260800000000000000
+      internalID: 7084850825422894688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_1
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 1349
+        width: 139
+        height: 231
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89758a87f2ff72230800000000000000
+      internalID: 3614137805340956568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_2
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 1348
+        width: 137
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dff0435c99c319650800000000000000
+      internalID: 6237833590021033981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_3
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 1067
+        width: 167
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c4517fa970f91cd0800000000000000
+      internalID: -2586772105522490170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_4
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1044
+        width: 138
+        height: 248
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad50d4b2b2dcb37a0800000000000000
+      internalID: -6396293260455901734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_5
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 810
+        width: 159
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 121fe0fa145996540800000000000000
+      internalID: 5001692970514051361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_6
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 1050
+        width: 136
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84b1299b4a31e6010800000000000000
+      internalID: 1183905350253943624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_7
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 546
+        width: 160
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 077d667ba69c04fc0800000000000000
+      internalID: -3512586249168300176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_8
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 289
+        width: 110
+        height: 237
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0044658cf7e4792b0800000000000000
+      internalID: -5577903302746160128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 279
+        width: 161
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a371d156b50cb7330800000000000000
+      internalID: 3709770216840697658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_11
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 13
+        width: 162
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 536b1d0ad564cf260800000000000000
+      internalID: 7132653277792024117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armarios_12
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 26
+        width: 110
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d08ca8961c233f430800000000000000
+      internalID: 3815449115593721869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 614de157a92ea27498ad0809a775c10d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Armarios_0: 7084850825422894688
+      Armarios_1: 3614137805340956568
+      Armarios_10: 3709770216840697658
+      Armarios_11: 7132653277792024117
+      Armarios_12: 3815449115593721869
+      Armarios_13: 6293627684783492193
+      Armarios_14: 1840587240952894761
+      Armarios_2: 6237833590021033981
+      Armarios_3: -2586772105522490170
+      Armarios_4: -6396293260455901734
+      Armarios_5: 5001692970514051361
+      Armarios_6: 1183905350253943624
+      Armarios_7: -3512586249168300176
+      Armarios_8: -5577903302746160128
+      Armarios_9: -1661937113436131795
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

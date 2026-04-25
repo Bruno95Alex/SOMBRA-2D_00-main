@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9232e1cd1d356b4d8f56cb8630cd7f1, type: 3}
+  m_Name: Page_2
+  m_EditorClassIdentifier: 
+  itemName: Pag-2
+  icon: {fileID: 1388778504628217740, guid: 7bc2cd116c50e2d41aa9015bb9764760, type: 3}
+  description: "\"Come\xE7ou de forma sutil. Primeiro foram apenas reflexos estranhos
+    nas telas dos computadores desligados. Depois as sombras come\xE7aram a se mover
+    nos cantos da vis\xE3o. Quando eu virava para olhar diretamente, n\xE3o havia
+    nada. Mas sei que algo est\xE1 observando.\""
+  isDiaryPage: 1

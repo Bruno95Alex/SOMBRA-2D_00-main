@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9232e1cd1d356b4d8f56cb8630cd7f1, type: 3}
+  m_Name: Page_1
+  m_EditorClassIdentifier: 
+  itemName: Pag-1
+  icon: {fileID: 2677917561952771192, guid: 7bc2cd116c50e2d41aa9015bb9764760, type: 3}
+  description: "\"Encontrei este di\xE1rio escondido entre os livros antigos da biblioteca.
+    A capa mostra algo que nunca vi antes\u2026 uma criatura feita completamente
+    de sombra. Os olhos s\xE3o duas luzes brancas que parecem observar qualquer pessoa
+    que olhe para ela. N\xE3o sei quem escreveu isso, mas algo me diz que essa hist\xF3ria
+    \xE9 real.\""
+  isDiaryPage: 1
