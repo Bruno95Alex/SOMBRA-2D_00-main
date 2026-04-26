@@ -16,7 +16,13 @@ public class UIFade : MonoBehaviour
         if (fadeImage == null)
         {
             Debug.LogError("❌ FadeImage NÃO foi atribuído no Inspector!");
+            return;
         }
+
+        // 🔥 começa invisível
+        Color c = fadeImage.color;
+        c.a = 0;
+        fadeImage.color = c;
     }
 
     public IEnumerator FadeOut()
@@ -28,9 +34,18 @@ public class UIFade : MonoBehaviour
         while (t < 1)
         {
             t += Time.deltaTime * speed;
-            fadeImage.color = new Color(0, 0, 0, t);
+
+            Color c = fadeImage.color;
+            c.a = t;
+            fadeImage.color = c;
+
             yield return null;
         }
+
+        // garante 100% preto
+        Color final = fadeImage.color;
+        final.a = 1;
+        fadeImage.color = final;
     }
 
     public IEnumerator FadeIn()
@@ -42,8 +57,17 @@ public class UIFade : MonoBehaviour
         while (t > 0)
         {
             t -= Time.deltaTime * speed;
-            fadeImage.color = new Color(0, 0, 0, t);
+
+            Color c = fadeImage.color;
+            c.a = t;
+            fadeImage.color = c;
+
             yield return null;
         }
+
+        // garante invisível
+        Color final = fadeImage.color;
+        final.a = 0;
+        fadeImage.color = final;
     }
 }

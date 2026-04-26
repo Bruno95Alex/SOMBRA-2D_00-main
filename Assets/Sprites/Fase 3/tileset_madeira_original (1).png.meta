@@ -1,0 +1,1959 @@
+fileFormatVersion: 2
+guid: 864eac82591fa7040bcc2a41641b3511
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2545930929128476070
+    second: tileset_madeira_original (1)_0
+  - first:
+      213: -1387616205922387179
+    second: tileset_madeira_original (1)_1
+  - first:
+      213: -6140881468809788745
+    second: tileset_madeira_original (1)_2
+  - first:
+      213: -7256095149606547442
+    second: tileset_madeira_original (1)_3
+  - first:
+      213: 4476944389922855086
+    second: tileset_madeira_original (1)_4
+  - first:
+      213: -2572994549116261179
+    second: tileset_madeira_original (1)_5
+  - first:
+      213: -6946570108145869711
+    second: tileset_madeira_original (1)_6
+  - first:
+      213: -1530207587497694693
+    second: tileset_madeira_original (1)_7
+  - first:
+      213: -2774631182698801420
+    second: tileset_madeira_original (1)_8
+  - first:
+      213: 5443285737809556990
+    second: tileset_madeira_original (1)_9
+  - first:
+      213: 2132261675160997062
+    second: tileset_madeira_original (1)_10
+  - first:
+      213: -2297947503945546513
+    second: tileset_madeira_original (1)_11
+  - first:
+      213: 7053035801450436467
+    second: tileset_madeira_original (1)_12
+  - first:
+      213: -7405056935288070877
+    second: tileset_madeira_original (1)_13
+  - first:
+      213: 2583753973559226239
+    second: tileset_madeira_original (1)_14
+  - first:
+      213: -659292688536764784
+    second: tileset_madeira_original (1)_15
+  - first:
+      213: 360867814765960652
+    second: tileset_madeira_original (1)_16
+  - first:
+      213: 4231700099898716939
+    second: tileset_madeira_original (1)_17
+  - first:
+      213: 4034248961827644540
+    second: tileset_madeira_original (1)_18
+  - first:
+      213: -731002856551263963
+    second: tileset_madeira_original (1)_19
+  - first:
+      213: 7820443036464333051
+    second: tileset_madeira_original (1)_20
+  - first:
+      213: 83986300464269811
+    second: tileset_madeira_original (1)_21
+  - first:
+      213: 7703673918644903755
+    second: tileset_madeira_original (1)_22
+  - first:
+      213: -1843183466373900178
+    second: tileset_madeira_original (1)_23
+  - first:
+      213: -6854885491580930573
+    second: tileset_madeira_original (1)_24
+  - first:
+      213: -919157964108339812
+    second: tileset_madeira_original (1)_25
+  - first:
+      213: -1694358109705273932
+    second: tileset_madeira_original (1)_26
+  - first:
+      213: -66017111204528310
+    second: tileset_madeira_original (1)_27
+  - first:
+      213: -2542031253690347882
+    second: tileset_madeira_original (1)_28
+  - first:
+      213: 2402948158465877753
+    second: tileset_madeira_original (1)_29
+  - first:
+      213: 717888776775365545
+    second: tileset_madeira_original (1)_30
+  - first:
+      213: 9045123351105497306
+    second: tileset_madeira_original (1)_31
+  - first:
+      213: 2060175319005977847
+    second: tileset_madeira_original (1)_32
+  - first:
+      213: -7776524599511010371
+    second: tileset_madeira_original (1)_33
+  - first:
+      213: -8066781718515264126
+    second: tileset_madeira_original (1)_34
+  - first:
+      213: 1052541036688099455
+    second: tileset_madeira_original (1)_35
+  - first:
+      213: 2951044367697733447
+    second: tileset_madeira_original (1)_36
+  - first:
+      213: 302683482193834720
+    second: tileset_madeira_original (1)_37
+  - first:
+      213: 6069724706907393302
+    second: tileset_madeira_original (1)_38
+  - first:
+      213: -7442094226086688766
+    second: tileset_madeira_original (1)_39
+  - first:
+      213: 3735695576945929519
+    second: tileset_madeira_original (1)_40
+  - first:
+      213: 5084371024365404478
+    second: tileset_madeira_original (1)_41
+  - first:
+      213: -6461503336779399450
+    second: tileset_madeira_original (1)_42
+  - first:
+      213: 143390740582274649
+    second: tileset_madeira_original (1)_43
+  - first:
+      213: -8552951086074491831
+    second: tileset_madeira_original (1)_44
+  - first:
+      213: 975194272009375903
+    second: tileset_madeira_original (1)_45
+  - first:
+      213: 5998015416765078041
+    second: tileset_madeira_original (1)_46
+  - first:
+      213: 7871578350876888222
+    second: tileset_madeira_original (1)_47
+  - first:
+      213: 640274502264157674
+    second: tileset_madeira_original (1)_48
+  - first:
+      213: -1527042136940630654
+    second: tileset_madeira_original (1)_49
+  - first:
+      213: -8089164562136777810
+    second: tileset_madeira_original (1)_50
+  - first:
+      213: 2002043085882738914
+    second: tileset_madeira_original (1)_51
+  - first:
+      213: -4342266275040219585
+    second: tileset_madeira_original (1)_52
+  - first:
+      213: -3650069816694952401
+    second: tileset_madeira_original (1)_53
+  - first:
+      213: -816667426345759504
+    second: tileset_madeira_original (1)_54
+  - first:
+      213: -2830770611320748916
+    second: tileset_madeira_original (1)_55
+  - first:
+      213: 4363852030903798380
+    second: tileset_madeira_original (1)_56
+  - first:
+      213: 3226499049324781305
+    second: tileset_madeira_original (1)_57
+  - first:
+      213: 1834633884555103223
+    second: tileset_madeira_original (1)_58
+  - first:
+      213: 1724710124930488936
+    second: tileset_madeira_original (1)_59
+  - first:
+      213: 767772783125200755
+    second: tileset_madeira_original (1)_60
+  - first:
+      213: 6999438495153206004
+    second: tileset_madeira_original (1)_61
+  - first:
+      213: 3007784186514472636
+    second: tileset_madeira_original (1)_62
+  - first:
+      213: -484187289432762191
+    second: tileset_madeira_original (1)_63
+  - first:
+      213: 5648222683334498956
+    second: tileset_madeira_original (1)_64
+  - first:
+      213: -3195997659120392902
+    second: tileset_madeira_original (1)_65
+  - first:
+      213: 3286929795384390359
+    second: tileset_madeira_original (1)_66
+  - first:
+      213: 7803997258375318702
+    second: tileset_madeira_original (1)_67
+  - first:
+      213: 6495401124648520388
+    second: tileset_madeira_original (1)_68
+  - first:
+      213: 4917852807907863119
+    second: tileset_madeira_original (1)_69
+  - first:
+      213: 1779847054308780543
+    second: tileset_madeira_original (1)_70
+  - first:
+      213: -6008683068816777431
+    second: tileset_madeira_original (1)_71
+  - first:
+      213: 1425151317347821967
+    second: tileset_madeira_original (1)_72
+  - first:
+      213: 8557263398718339251
+    second: tileset_madeira_original (1)_73
+  - first:
+      213: -7113528111800722919
+    second: tileset_madeira_original (1)_74
+  - first:
+      213: -8093470808494290760
+    second: tileset_madeira_original (1)_75
+  - first:
+      213: 2275710946313380126
+    second: tileset_madeira_original (1)_76
+  - first:
+      213: 163983610209395928
+    second: tileset_madeira_original (1)_77
+  - first:
+      213: 3062617148005707897
+    second: tileset_madeira_original (1)_78
+  - first:
+      213: 4215751070858423273
+    second: tileset_madeira_original (1)_79
+  - first:
+      213: -3475738403921643424
+    second: tileset_madeira_original (1)_80
+  - first:
+      213: 6516814872628161307
+    second: tileset_madeira_original (1)_81
+  - first:
+      213: -102702972439492871
+    second: tileset_madeira_original (1)_82
+  - first:
+      213: 5304820910250521055
+    second: tileset_madeira_original (1)_83
+  - first:
+      213: -8269875023066560369
+    second: tileset_madeira_original (1)_84
+  - first:
+      213: 4915254275486636318
+    second: tileset_madeira_original (1)_85
+  - first:
+      213: -6235113344907407791
+    second: tileset_madeira_original (1)_86
+  - first:
+      213: -3185396963709243258
+    second: tileset_madeira_original (1)_87
+  - first:
+      213: 6585445703152112830
+    second: tileset_madeira_original (1)_88
+  - first:
+      213: 3540235267716604195
+    second: tileset_madeira_original (1)_89
+  - first:
+      213: 5580948957315210183
+    second: tileset_madeira_original (1)_90
+  - first:
+      213: 1060400161059961772
+    second: tileset_madeira_original (1)_91
+  - first:
+      213: 8211502383995147336
+    second: tileset_madeira_original (1)_92
+  - first:
+      213: -3696210800281167251
+    second: tileset_madeira_original (1)_93
+  - first:
+      213: -4487293149550736556
+    second: tileset_madeira_original (1)_94
+  - first:
+      213: 4089736030585103021
+    second: tileset_madeira_original (1)_95
+  - first:
+      213: 4295408918810993008
+    second: tileset_madeira_original (1)_96
+  - first:
+      213: 2484411009464751769
+    second: tileset_madeira_original (1)_97
+  - first:
+      213: 6684979709598652277
+    second: tileset_madeira_original (1)_98
+  - first:
+      213: 7802989242436655738
+    second: tileset_madeira_original (1)_99
+  - first:
+      213: -4013391230382111724
+    second: tileset_madeira_original (1)_100
+  - first:
+      213: 2586850551967417290
+    second: tileset_madeira_original (1)_101
+  - first:
+      213: -8852871740121144637
+    second: tileset_madeira_original (1)_102
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_10
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 1044
+        width: 105
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cc862442b0579d10800000000000000
+      internalID: 2132261675160997062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_11
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 1044
+        width: 107
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe484d29bec0c10e0800000000000000
+      internalID: -2297947503945546513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_12
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 1044
+        width: 98
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 377d09d51ba61e160800000000000000
+      internalID: 7053035801450436467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_13
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 1044
+        width: 109
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d9c9673f3fb3990800000000000000
+      internalID: -7405056935288070877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_14
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1044
+        width: 108
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7f6005bc865bd320800000000000000
+      internalID: 2583753973559226239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_15
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 1044
+        width: 107
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09ef0c8fac8b9d6f0800000000000000
+      internalID: -659292688536764784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_16
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 1044
+        width: 109
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccd1ff59d5f020500800000000000000
+      internalID: 360867814765960652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_17
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 1044
+        width: 100
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b03b27202d40aba30800000000000000
+      internalID: 4231700099898716939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_18
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 1044
+        width: 108
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c74a9317e088cf730800000000000000
+      internalID: 4034248961827644540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_19
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 1044
+        width: 102
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 521577566c4fad5f0800000000000000
+      internalID: -731002856551263963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_20
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 923
+        width: 106
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf042a6d18bc78c60800000000000000
+      internalID: 7820443036464333051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_21
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 923
+        width: 107
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f90c2568116a2100800000000000000
+      internalID: 83986300464269811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_22
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 923
+        width: 98
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4f554afc92f8ea60800000000000000
+      internalID: 7703673918644903755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_23
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 921
+        width: 108
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6819e62762bb66e0800000000000000
+      internalID: -1843183466373900178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_24
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 924
+        width: 107
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5f652d6fd8ed0a0800000000000000
+      internalID: -6854885491580930573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_25
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 925
+        width: 107
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c95e9d893be7e33f0800000000000000
+      internalID: -919157964108339812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_26
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 925
+        width: 108
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bdf6bcb64e6c78e0800000000000000
+      internalID: -1694358109705273932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_27
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 925
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4f7e8189c5751ff0800000000000000
+      internalID: -66017111204528310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_37
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 743
+        width: 104
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e2ba8bf509533400800000000000000
+      internalID: 302683482193834720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_38
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 743
+        width: 103
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d80af467efb3450800000000000000
+      internalID: 6069724706907393302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_39
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 743
+        width: 97
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2080e153bbe58b890800000000000000
+      internalID: -7442094226086688766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_40
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 743
+        width: 106
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2d2cdca55bd7d330800000000000000
+      internalID: 3735695576945929519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_41
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 743
+        width: 106
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e31c69d22805f8640800000000000000
+      internalID: 5084371024365404478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_42
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 795
+        width: 103
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ee334023f02456a0800000000000000
+      internalID: -6461503336779399450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_43
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 740
+        width: 40
+        height: 115
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9569c7c6e1d6df100800000000000000
+      internalID: 143390740582274649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_44
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 743
+        width: 92
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94c0d3d7d40dd4980800000000000000
+      internalID: -8552951086074491831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_45
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 795
+        width: 131
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f905d1a0606988d00800000000000000
+      internalID: 975194272009375903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_46
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 740
+        width: 97
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91a59912e3b3d3350800000000000000
+      internalID: 5998015416765078041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_58
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 595
+        width: 47
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fb4dc53ccde57910800000000000000
+      internalID: 1834633884555103223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_60
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 595
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37ff366474da7aa00800000000000000
+      internalID: 767772783125200755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_61
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 584
+        width: 108
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f23dca0a30032160800000000000000
+      internalID: 6999438495153206004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_62
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 584
+        width: 74
+        height: 53
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbe7b3e18cbcdb920800000000000000
+      internalID: 3007784186514472636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_63
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 584
+        width: 89
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b8d990c932d749f0800000000000000
+      internalID: -484187289432762191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_64
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 577
+        width: 77
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8ad47cda94826e40800000000000000
+      internalID: 5648222683334498956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_65
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 577
+        width: 105
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a352629ef0985a3d0800000000000000
+      internalID: -3195997659120392902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_66
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 573
+        width: 119
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2b887eb358d9d20800000000000000
+      internalID: 3286929795384390359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_68
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 568
+        width: 139
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ca0954a8ec442a50800000000000000
+      internalID: 6495401124648520388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_70
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 492
+        width: 113
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff9a992477943b810800000000000000
+      internalID: 1779847054308780543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_71
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 491
+        width: 112
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92f9543959edc9ca0800000000000000
+      internalID: -6008683068816777431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_72
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 491
+        width: 108
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8962b5829727c310800000000000000
+      internalID: 1425151317347821967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_73
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 446
+        width: 79
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b8fe0a09b181c670800000000000000
+      internalID: 8557263398718339251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_74
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 446
+        width: 103
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91adc541fdba74d90800000000000000
+      internalID: -7113528111800722919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_75
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 446
+        width: 111
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b844b34e273eaf80800000000000000
+      internalID: -8093470808494290760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_76
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 446
+        width: 126
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e112a766c03f49f10800000000000000
+      internalID: 2275710946313380126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_82
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 88
+        width: 112
+        height: 313
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f60e52d030239ef0800000000000000
+      internalID: -102702972439492871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_83
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 242
+        width: 60
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd1fb8003828e9940800000000000000
+      internalID: 5304820910250521055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_84
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 225
+        width: 93
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f880e317b708b3d80800000000000000
+      internalID: -8269875023066560369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_85
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 238
+        width: 89
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e19d91fa8bd763440800000000000000
+      internalID: 4915254275486636318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_86
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 246
+        width: 54
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15e0f76a27d6879a0800000000000000
+      internalID: -6235113344907407791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_87
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 258
+        width: 49
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 680b085a6523bc3d0800000000000000
+      internalID: -3185396963709243258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_88
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 250
+        width: 144
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb41100d9f3346b50800000000000000
+      internalID: 6585445703152112830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_89
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 103
+        width: 350
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 321ee811831712130800000000000000
+      internalID: 3540235267716604195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_90
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 165
+        width: 45
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb1c5ee183837d40800000000000000
+      internalID: 5580948957315210183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_91
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 165
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cabfeb7045c47be00800000000000000
+      internalID: 1060400161059961772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_92
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 177
+        width: 68
+        height: 57
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 844dd4e69ed15f170800000000000000
+      internalID: 8211502383995147336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_93
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 205
+        width: 31
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6a574a4cdb64bcc0800000000000000
+      internalID: -3696210800281167251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_94
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 185
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45b0cf9b7aee9b1c0800000000000000
+      internalID: -4487293149550736556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_95
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 96
+        width: 146
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da224206049a1c830800000000000000
+      internalID: 4089736030585103021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_96
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 149
+        width: 47
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07126c257ab5c9b30800000000000000
+      internalID: 4295408918810993008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_97
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 161
+        width: 52
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 996573f66a66a7220800000000000000
+      internalID: 2484411009464751769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_98
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 165
+        width: 42
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577525990a1d5cc50800000000000000
+      internalID: 6684979709598652277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_99
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 103
+        width: 43
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7a91adbf59c94c60800000000000000
+      internalID: 7802989242436655738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_100
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 108
+        width: 49
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 414086890f19d48c0800000000000000
+      internalID: -4013391230382111724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_101
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 77
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac38a0d0fd656e320800000000000000
+      internalID: 2586850551967417290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tileset_madeira_original (1)_102
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 79
+        width: 53
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c22cff8e08442580800000000000000
+      internalID: -8852871740121144637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: dee080e3489febe428063a2f7b5a6164
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      tileset_madeira_original (1)_0: -2545930929128476070
+      tileset_madeira_original (1)_1: -1387616205922387179
+      tileset_madeira_original (1)_10: 2132261675160997062
+      tileset_madeira_original (1)_100: -4013391230382111724
+      tileset_madeira_original (1)_101: 2586850551967417290
+      tileset_madeira_original (1)_102: -8852871740121144637
+      tileset_madeira_original (1)_11: -2297947503945546513
+      tileset_madeira_original (1)_12: 7053035801450436467
+      tileset_madeira_original (1)_13: -7405056935288070877
+      tileset_madeira_original (1)_14: 2583753973559226239
+      tileset_madeira_original (1)_15: -659292688536764784
+      tileset_madeira_original (1)_16: 360867814765960652
+      tileset_madeira_original (1)_17: 4231700099898716939
+      tileset_madeira_original (1)_18: 4034248961827644540
+      tileset_madeira_original (1)_19: -731002856551263963
+      tileset_madeira_original (1)_2: -6140881468809788745
+      tileset_madeira_original (1)_20: 7820443036464333051
+      tileset_madeira_original (1)_21: 83986300464269811
+      tileset_madeira_original (1)_22: 7703673918644903755
+      tileset_madeira_original (1)_23: -1843183466373900178
+      tileset_madeira_original (1)_24: -6854885491580930573
+      tileset_madeira_original (1)_25: -919157964108339812
+      tileset_madeira_original (1)_26: -1694358109705273932
+      tileset_madeira_original (1)_27: -66017111204528310
+      tileset_madeira_original (1)_28: -2542031253690347882
+      tileset_madeira_original (1)_29: 2402948158465877753
+      tileset_madeira_original (1)_3: -7256095149606547442
+      tileset_madeira_original (1)_30: 717888776775365545
+      tileset_madeira_original (1)_31: 9045123351105497306
+      tileset_madeira_original (1)_32: 2060175319005977847
+      tileset_madeira_original (1)_33: -7776524599511010371
+      tileset_madeira_original (1)_34: -8066781718515264126
+      tileset_madeira_original (1)_35: 1052541036688099455
+      tileset_madeira_original (1)_36: 2951044367697733447
+      tileset_madeira_original (1)_37: 302683482193834720
+      tileset_madeira_original (1)_38: 6069724706907393302
+      tileset_madeira_original (1)_39: -7442094226086688766
+      tileset_madeira_original (1)_4: 4476944389922855086
+      tileset_madeira_original (1)_40: 3735695576945929519
+      tileset_madeira_original (1)_41: 5084371024365404478
+      tileset_madeira_original (1)_42: -6461503336779399450
+      tileset_madeira_original (1)_43: 143390740582274649
+      tileset_madeira_original (1)_44: -8552951086074491831
+      tileset_madeira_original (1)_45: 975194272009375903
+      tileset_madeira_original (1)_46: 5998015416765078041
+      tileset_madeira_original (1)_47: 7871578350876888222
+      tileset_madeira_original (1)_48: 640274502264157674
+      tileset_madeira_original (1)_49: -1527042136940630654
+      tileset_madeira_original (1)_5: -2572994549116261179
+      tileset_madeira_original (1)_50: -8089164562136777810
+      tileset_madeira_original (1)_51: 2002043085882738914
+      tileset_madeira_original (1)_52: -4342266275040219585
+      tileset_madeira_original (1)_53: -3650069816694952401
+      tileset_madeira_original (1)_54: -816667426345759504
+      tileset_madeira_original (1)_55: -2830770611320748916
+      tileset_madeira_original (1)_56: 4363852030903798380
+      tileset_madeira_original (1)_57: 3226499049324781305
+      tileset_madeira_original (1)_58: 1834633884555103223
+      tileset_madeira_original (1)_59: 1724710124930488936
+      tileset_madeira_original (1)_6: -6946570108145869711
+      tileset_madeira_original (1)_60: 767772783125200755
+      tileset_madeira_original (1)_61: 6999438495153206004
+      tileset_madeira_original (1)_62: 3007784186514472636
+      tileset_madeira_original (1)_63: -484187289432762191
+      tileset_madeira_original (1)_64: 5648222683334498956
+      tileset_madeira_original (1)_65: -3195997659120392902
+      tileset_madeira_original (1)_66: 3286929795384390359
+      tileset_madeira_original (1)_67: 7803997258375318702
+      tileset_madeira_original (1)_68: 6495401124648520388
+      tileset_madeira_original (1)_69: 4917852807907863119
+      tileset_madeira_original (1)_7: -1530207587497694693
+      tileset_madeira_original (1)_70: 1779847054308780543
+      tileset_madeira_original (1)_71: -6008683068816777431
+      tileset_madeira_original (1)_72: 1425151317347821967
+      tileset_madeira_original (1)_73: 8557263398718339251
+      tileset_madeira_original (1)_74: -7113528111800722919
+      tileset_madeira_original (1)_75: -8093470808494290760
+      tileset_madeira_original (1)_76: 2275710946313380126
+      tileset_madeira_original (1)_77: 163983610209395928
+      tileset_madeira_original (1)_78: 3062617148005707897
+      tileset_madeira_original (1)_79: 4215751070858423273
+      tileset_madeira_original (1)_8: -2774631182698801420
+      tileset_madeira_original (1)_80: -3475738403921643424
+      tileset_madeira_original (1)_81: 6516814872628161307
+      tileset_madeira_original (1)_82: -102702972439492871
+      tileset_madeira_original (1)_83: 5304820910250521055
+      tileset_madeira_original (1)_84: -8269875023066560369
+      tileset_madeira_original (1)_85: 4915254275486636318
+      tileset_madeira_original (1)_86: -6235113344907407791
+      tileset_madeira_original (1)_87: -3185396963709243258
+      tileset_madeira_original (1)_88: 6585445703152112830
+      tileset_madeira_original (1)_89: 3540235267716604195
+      tileset_madeira_original (1)_9: 5443285737809556990
+      tileset_madeira_original (1)_90: 5580948957315210183
+      tileset_madeira_original (1)_91: 1060400161059961772
+      tileset_madeira_original (1)_92: 8211502383995147336
+      tileset_madeira_original (1)_93: -3696210800281167251
+      tileset_madeira_original (1)_94: -4487293149550736556
+      tileset_madeira_original (1)_95: 4089736030585103021
+      tileset_madeira_original (1)_96: 4295408918810993008
+      tileset_madeira_original (1)_97: 2484411009464751769
+      tileset_madeira_original (1)_98: 6684979709598652277
+      tileset_madeira_original (1)_99: 7802989242436655738
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
