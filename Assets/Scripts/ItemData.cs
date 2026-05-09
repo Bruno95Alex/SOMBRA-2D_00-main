@@ -20,4 +20,9 @@ public class ItemData : ScriptableObject
     [TextArea] public string description;
 
     public bool isDiaryPage;
+
+    // 🔥 NOVOS TIPOS
+    public bool isKey;
+    public bool isBattery;
 }
+
