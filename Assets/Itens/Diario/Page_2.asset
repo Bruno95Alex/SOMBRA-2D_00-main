@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Pag-2
   icon: {fileID: 1388778504628217740, guid: 7bc2cd116c50e2d41aa9015bb9764760, type: 3}
-  description: "\"Come\xE7ou de forma sutil. Primeiro foram apenas reflexos estranhos
-    nas telas dos computadores desligados. Depois as sombras come\xE7aram a se mover
-    nos cantos da vis\xE3o. Quando eu virava para olhar diretamente, n\xE3o havia
-    nada. Mas sei que algo est\xE1 observando.\""
+  description: "\"No come\xE7o achei que era impress\xE3o.\r\nReflexos estranhos
+    nas telas desligadas\u2026 sombras que n\xE3o combinam com os objetos.\r\nMas
+    agora tenho certeza.\r\nElas se movem.\r\nSempre nos cantos da vis\xE3o. Sempre
+    desaparecem quando tento olhar diretamente.\r\nHoje, por um segundo\u2026 vi
+    os olhos.\r\nN\xE3o estou sozinho aqui.\"\r"
   isDiaryPage: 1
+  isKey: 0
+  isBattery: 0

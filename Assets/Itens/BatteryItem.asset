@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9232e1cd1d356b4d8f56cb8630cd7f1, type: 3}
   m_Name: BatteryItem
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: BateriaGerador
   icon: {fileID: 0}
   description: 
   isDiaryPage: 0

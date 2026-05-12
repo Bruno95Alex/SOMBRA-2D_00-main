@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9232e1cd1d356b4d8f56cb8630cd7f1, type: 3}
   m_Name: KeyGenerator
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: ChaveGerador
   icon: {fileID: 731363098068464032, guid: 8902d53d22cc6c2409119b1a39f55386, type: 3}
   description: Chave usada para ligar o gerador de energia.
   isDiaryPage: 0

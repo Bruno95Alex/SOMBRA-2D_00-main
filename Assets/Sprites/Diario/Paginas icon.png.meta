@@ -181,28 +181,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Paginas icon_2
-      rect:
-        serializedVersion: 2
-        x: 516
-        y: 1107
-        width: 235
-        height: 246
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6f2f12462f143a2e0800000000000000
-      internalID: -2115774890616163594
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Paginas icon_3
       rect:
         serializedVersion: 2
@@ -264,28 +242,6 @@ TextureImporter:
       bones: []
       spriteID: 7f861762ed62d1fd0800000000000000
       internalID: -2369695093357451017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Paginas icon_6
-      rect:
-        serializedVersion: 2
-        x: 517
-        y: 821
-        width: 244
-        height: 243
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b7e337572cea0bd10800000000000000
-      internalID: 2139401973218360955
       vertices: []
       indices: 
       edges: []

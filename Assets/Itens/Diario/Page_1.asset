@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Pag-1
   icon: {fileID: 2677917561952771192, guid: 7bc2cd116c50e2d41aa9015bb9764760, type: 3}
-  description: "\"Encontrei este di\xE1rio escondido entre os livros antigos da biblioteca.
-    A capa mostra algo que nunca vi antes\u2026 uma criatura feita completamente
-    de sombra. Os olhos s\xE3o duas luzes brancas que parecem observar qualquer pessoa
-    que olhe para ela. N\xE3o sei quem escreveu isso, mas algo me diz que essa hist\xF3ria
-    \xE9 real.\""
+  description: "\"Eu n\xE3o deveria ter mexido nisso.\r\nEncontrei este di\xE1rio
+    escondido entre livros antigos da biblioteca, como se algu\xE9m tivesse tentado
+    escond\xEA-lo\u2026 ou esquec\xEA-lo.\r\nA capa tem o desenho de uma coisa\u2026
+    humanoide, mas errada. Feita de pura escurid\xE3o. N\xE3o reflete luz\u2026 ela
+    engole.\r\nS\xF3 os olhos aparecem. Duas luzes brancas. Fixas. Observando.\r\nN\xE3o
+    sei quem escreveu isso\u2026 mas tenho a sensa\xE7\xE3o de que isso n\xE3o \xE9
+    uma boa hist\xF3ria.\"\r\n"
   isDiaryPage: 1
+  isKey: 0
+  isBattery: 0

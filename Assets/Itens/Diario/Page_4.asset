@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9232e1cd1d356b4d8f56cb8630cd7f1, type: 3}
+  m_Name: Page_4
+  m_EditorClassIdentifier: 
+  itemName: Pag-2
+  icon: {fileID: -8476983925794081571, guid: 7bc2cd116c50e2d41aa9015bb9764760, type: 3}
+  description: "\"Agora tudo faz sentido.\r\nExiste um momento em que ela domina
+    tudo: quando a luz desaparece.\r\nDurante tempestades\u2026 quedas de energia\u2026
+    falhas no sistema\u2026\r\nO campus inteiro vira territ\xF3rio dela.\r\nAs sombras
+    se movem livremente.\r\nPortas aparecem onde n\xE3o existiam antes.\r\n Corredores
+    mudam.\r\n\xC9 como se o lugar inteiro estivesse\u2026 sendo consumido.\"\r"
+  isDiaryPage: 1
+  isKey: 0
+  isBattery: 0

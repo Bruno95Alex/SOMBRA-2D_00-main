@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9232e1cd1d356b4d8f56cb8630cd7f1, type: 3}
+  m_Name: Page_6
+  m_EditorClassIdentifier: 
+  itemName: Pag-2
+  icon: {fileID: 7230276945312714902, guid: 7bc2cd116c50e2d41aa9015bb9764760, type: 3}
+  description: "\"Se voc\xEA chegou at\xE9 aqui\u2026 ent\xE3o ainda h\xE1 esperan\xE7a.\r\nEu
+    cometi um erro. Tentei enfrentar a escurid\xE3o.\r\nN\xE3o fa\xE7a isso.\r\nVoc\xEA
+    n\xE3o pode lutar contra ela.\r\nMas pode negar o que ela precisa.\r\nTraga a
+    luz de volta.\r\nMesmo o menor brilho\u2026 j\xE1 \xE9 suficiente para afast\xE1-la.\r\nR\xE1pido\u2026
+    antes que ela perceba voc\xEA tamb\xE9m.\"\r"
+  isDiaryPage: 1
+  isKey: 0
+  isBattery: 0
