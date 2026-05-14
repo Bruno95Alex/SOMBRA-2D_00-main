@@ -7,10 +7,11 @@ public class Generator : MonoBehaviour
     [SerializeField] private ItemData batteryItem;
 
     private bool playerNear;
+    private bool activated;
 
     void Update()
     {
-        if (!playerNear) return;
+        if (!playerNear || activated) return;
 
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
@@ -22,25 +23,37 @@ public class Generator : MonoBehaviour
                 InventorySystem.Instance.RemoveItem(keyItem);
                 InventorySystem.Instance.RemoveItem(batteryItem);
 
+                activated = true;
+
+                UIMessage.Instance.Show("Gerador ativado! Corra para a saída!", 3f);
+
                 Debug.Log("GERADOR LIGADO");
 
-                UIMessage.Instance.Show("Gerador ativado!", 2f);
-
-                // 👉 aqui você coloca o final
+                // TODO: acionar condição de vitória aqui (ex: VictoryManager.Instance.Win())
+            }
+            else if (!hasKey && !hasBattery)
+            {
+                UIMessage.Instance.Show("Você precisa da chave e da bateria", 2f);
+            }
+            else if (!hasKey)
+            {
+                UIMessage.Instance.Show("Você precisa da chave do gerador", 2f);
             }
             else
             {
-                UIMessage.Instance.Show("Falta a chave e a bateria", 2f);
+                UIMessage.Instance.Show("Você precisa da bateria", 2f);
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (activated) return;
+
         if (other.CompareTag("Player"))
         {
             playerNear = true;
-            UIMessage.Instance.Show("Pressione F para ligar", 999f);
+            UIMessage.Instance.Show("Pressione F para ligar o gerador", 999f);
         }
     }
 

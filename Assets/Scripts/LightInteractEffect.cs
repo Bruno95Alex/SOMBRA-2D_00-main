@@ -1,136 +1,37 @@
-// using UnityEngine;
-
-// public class LightInteractEffect : MonoBehaviour
-// {
-//     private SpriteRenderer sr;
-
-//     [SerializeField] private Color normalColor = Color.white;
-//     [SerializeField] private Color highlightColor = Color.yellow;
-
-//     [SerializeField] private float scaleMultiplier = 1.2f;
-
-//     [SerializeField] private ParticleSystem glowParticles;
-
-//     private Vector3 originalScale;
-//     private bool isLit = false;
-
-//     void Start()
-//     {
-//         sr = GetComponent<SpriteRenderer>();
-//         originalScale = transform.localScale;
-
-//         // 🔥 garante que a partícula começa desligada
-//         if (glowParticles != null)
-//         {
-//             glowParticles.Stop();
-//             glowParticles.Clear();
-//         }
-//     }
-
-//     public void OnLightEnter()
-//     {
-//         if (isLit) return; // evita repetir várias vezes
-
-//         isLit = true;
-
-//         sr.color = highlightColor;
-//         transform.localScale = originalScale * scaleMultiplier;
-
-//         if (glowParticles != null)
-//         {
-//             glowParticles.Clear(); // limpa antes de tocar
-//             glowParticles.Play();
-//         }
-//     }
-
-//     public void OnLightExit()
-//     {
-//         if (!isLit) return;
-
-//         isLit = false;
-
-//         sr.color = normalColor;
-//         transform.localScale = originalScale;
-
-//         if (glowParticles != null)
-//         {
-//             glowParticles.Stop();
-//             glowParticles.Clear();
-//         }
-//     }
-// }
-
-
-
 using UnityEngine;
 
+/// <summary>
+/// Ponte entre o FlashlightTrigger e o ItemGlow.
+/// Coloque este componente no mesmo GameObject que o ItemGlow.
+/// O FlashlightTrigger detecta pela Layer "Item" e chama OnLightEnter/Exit.
+/// </summary>
 public class LightInteractEffect : MonoBehaviour
 {
-    private SpriteRenderer sr;
+    private ItemGlow itemGlow;
 
-    [SerializeField] private Color normalColor = Color.white;
-    [SerializeField] private Color highlightColor = Color.yellow;
-
-    [SerializeField] private float scaleMultiplier = 1.2f;
-
-    [SerializeField] private GameObject glowObject; // 🔥 NOVO
-
-    [SerializeField] private Transform glowTransform;
-
-    private Vector3 originalScale;
-    private bool isLit = false;
-
-    void Start()
+    void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-        originalScale = transform.localScale;
+        itemGlow = GetComponent<ItemGlow>();
 
-        if (glowObject != null)
-            glowObject.SetActive(false); // começa desligado
+        if (itemGlow == null)
+            Debug.LogWarning("LightInteractEffect: ItemGlow não encontrado em " + gameObject.name);
     }
-
-    void Update()
-{
-    if (isLit && glowTransform != null)
-    {
-        float pulse = Mathf.Sin(Time.time * 4f) * 0.1f;
-        glowTransform.localScale = Vector3.one * (1.5f + pulse);
-    }
-}
 
     public void OnLightEnter()
     {
-        if (isLit) return;
-
-        isLit = true;
-
-        sr.color = highlightColor;
-        transform.localScale = originalScale * scaleMultiplier;
-
-        if (glowObject != null)
-            glowObject.SetActive(true);
+        if (itemGlow != null)
+            itemGlow.SetLit(true);
     }
 
     public void OnLightExit()
     {
-        if (!isLit) return;
-
-        isLit = false;
-
-        sr.color = normalColor;
-        transform.localScale = originalScale;
-
-        if (glowObject != null)
-            glowObject.SetActive(false);
+        if (itemGlow != null)
+            itemGlow.SetLit(false);
     }
 
     public void SetLit(bool value)
-{
-    if (value)
-        OnLightEnter();
-    else
-        OnLightExit();
-}
-
-
+    {
+        if (value) OnLightEnter();
+        else OnLightExit();
+    }
 }

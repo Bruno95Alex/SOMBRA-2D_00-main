@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro; // 🔥 necessário para mudar texto do botão
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
 
     [Header("UI Botão")]
-    [SerializeField] private TextMeshProUGUI viewButtonText; // 🔥 texto do botão
+    [SerializeField] private TextMeshProUGUI viewButtonText;
 
     private ItemData selectedItem;
     private bool aberto = false;
@@ -35,14 +35,10 @@ public class InventoryUI : MonoBehaviour
     void Update()
     {
         if (Keyboard.current.iKey.wasPressedThisFrame)
-        {
             ToggleInventory();
-        }
 
         if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
             CloseAll();
-        }
     }
 
     void ToggleInventory()
@@ -71,102 +67,53 @@ public class InventoryUI : MonoBehaviour
         if (optionsPanel != null)
             optionsPanel.SetActive(true);
 
-        // posição no mouse
         Vector2 mousePos = Mouse.current.position.ReadValue();
         optionsPanel.transform.position = mousePos;
 
-        // 🔥 TEXTO DINÂMICO DO BOTÃO
         if (viewButtonText != null)
-        {
-            if (selectedItem.isDiaryPage)
-                viewButtonText.text = "Ler";
-            else
-                viewButtonText.text = "Examinar";
-        }
+            viewButtonText.text = selectedItem.isDiaryPage ? "Ler" : "Examinar";
     }
 
     // ================================
-    // BOTÃO 1 — VER / USAR
+    // BOTÃO — VER / USAR
     // ================================
 
-//     public void ViewItem()
-// {
-//     if (selectedItem == null) return;
-
-//     // 🔥 ESCONDE O MENU ANTES DE ABRIR
-//     if (optionsPanel != null)
-//         optionsPanel.SetActive(false);
-
-//     if (selectedItem.isDiaryPage)
-//     {
-//         DiaryUI.Instance.ShowPage(selectedItem.description);
-//     }
-//     else
-//     {
-//         Debug.Log("Descrição: " + selectedItem.description);
-//     }
-// }
-
-// public void ViewItem()
-// {
-//     if (selectedItem == null) return;
-
-//     // fecha inventário e menu
-//     inventoryPanel.SetActive(false);
-//     optionsPanel.SetActive(false);
-//     aberto = false;
-
-//     if (selectedItem.isDiaryPage)
-//     {
-//         DiaryUI.Instance.ShowPage(selectedItem.description);
-//     }
-//     else
-//     {
-//         ItemDescriptionUI.Instance.Show(selectedItem); // 🔥 NOVO
-//     }
-// }
-public void ViewItem()
-{
-    Debug.Log("Clicou em ViewItem");
-
-    if (selectedItem == null)
+    public void ViewItem()
     {
-        Debug.LogError("selectedItem está NULL");
-        return;
-    }
-
-    inventoryPanel.SetActive(false);
-    optionsPanel.SetActive(false);
-    aberto = false;
-
-    if (selectedItem.isDiaryPage)
-    {
-        if (DiaryUI.Instance == null)
+        if (selectedItem == null)
         {
-            Debug.LogError("DiaryUI está NULL");
+            Debug.LogError("selectedItem está NULL");
             return;
         }
 
-        DiaryUI.Instance.ShowPage(selectedItem.description);
-    }
-    else
-    {
-        if (ItemDescriptionUI.Instance == null)
+        inventoryPanel.SetActive(false);
+        optionsPanel.SetActive(false);
+        aberto = false;
+
+        if (selectedItem.isDiaryPage)
         {
-            Debug.LogError("ItemDescriptionUI está NULL");
-            return;
+            if (DiaryUI.Instance == null)
+            {
+                Debug.LogError("DiaryUI está NULL");
+                return;
+            }
+
+            DiaryUI.Instance.ShowPage(selectedItem.description);
         }
+        else
+        {
+            if (ItemDescriptionUI.Instance == null)
+            {
+                Debug.LogError("ItemDescriptionUI está NULL");
+                return;
+            }
 
-        ItemDescriptionUI.Instance.Show(selectedItem);
+            ItemDescriptionUI.Instance.Show(selectedItem);
+        }
     }
-}
-
-
-
-
 
     // ================================
-    // BOTÃO 2 — FECHAR TUDO
+    // FECHAR TUDO
     // ================================
 
     public void CloseAll()
