@@ -1,45 +1,34 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using System.Collections;
 
 /// <summary>
 /// Coloque este script em cada janela da cena.
-/// Requer um Light 2D no mesmo GameObject ou num filho.
-///
-/// SETUP DA JANELA:
-/// 1. No GameObject da janela, adicione um Light 2D
-///    → Light Type: Spot (Parametric) ou Freeform
-///    → Aponte na direção que a luz entraria pelo vidro
-///    → Outer Radius: 4-6  Intensity: 0 (começa apagado)
-///    → Color: azul-branco frio (#C8D8FF) para luz de relâmpago
-/// 2. Adicione este script no mesmo GameObject
+/// O fade agora é controlado pelo LightningSystem (sem Coroutine local).
 /// </summary>
 public class WindowLight : MonoBehaviour
 {
     [Header("Luz da janela")]
     [SerializeField] private Light2D windowLight2D;
-    [SerializeField] private float flashIntensity = 1.4f;  // intensidade no flash
-    [SerializeField] private float fadeOutSpeed   = 6f;    // queda suave após o flash
+    [SerializeField] private float flashIntensity = 1.4f;
+    [SerializeField] private float fadeOutSpeed   = 6f;
 
     [Header("Sprite da janela (opcional)")]
-    [SerializeField] private SpriteRenderer windowSprite;  // se quiser clarear o sprite também
-    [SerializeField] private Color spriteFlashColor = new Color(0.8f, 0.85f, 1f); // azulado
+    [SerializeField] private SpriteRenderer windowSprite;
+    [SerializeField] private Color spriteFlashColor = new Color(0.8f, 0.85f, 1f);
 
     private Color spriteOriginalColor;
-    private bool isFlashing = false;
-    private Coroutine fadeCoroutine;
+
+    // estado atual — o LightningSystem chama Update indiretamente via Tick()
+    private bool fading = false;
 
     void Start()
     {
         if (windowLight2D == null)
             windowLight2D = GetComponent<Light2D>();
-
         if (windowLight2D == null)
             windowLight2D = GetComponentInChildren<Light2D>();
 
-        if (windowLight2D == null)
-            Debug.LogWarning("WindowLight: Light2D não encontrado em " + gameObject.name);
-        else
+        if (windowLight2D != null)
             windowLight2D.intensity = 0f;
 
         if (windowSprite != null)
@@ -47,16 +36,12 @@ public class WindowLight : MonoBehaviour
     }
 
     // =========================
-    // CHAMADO PELO LIGHTNINSYSTEM
+    // CHAMADO PELO LightningSystem
     // =========================
 
     public void FlashOn()
     {
-        if (fadeCoroutine != null)
-        {
-            StopCoroutine(fadeCoroutine);
-            fadeCoroutine = null;
-        }
+        fading = false;
 
         if (windowLight2D != null)
             windowLight2D.intensity = flashIntensity;
@@ -67,41 +52,33 @@ public class WindowLight : MonoBehaviour
 
     public void FlashOff()
     {
-        // não apaga instantaneamente — fade suave
-        if (fadeCoroutine != null)
-            StopCoroutine(fadeCoroutine);
-
-        fadeCoroutine = StartCoroutine(FadeOut());
+        fading = true; // fade é feito via Tick() chamado pelo LightningSystem
     }
 
-    // =========================
-    // FADE SUAVE
-    // =========================
-
-    IEnumerator FadeOut()
+    /// <summary>
+    /// Chamado pelo LightningSystem.Update() a cada frame.
+    /// Assim o fade roda no objeto sempre ativo (LightningSystem),
+    /// sem depender do estado do GameObject da janela.
+    /// </summary>
+    public void Tick(float deltaTime)
     {
-        while (windowLight2D != null && windowLight2D.intensity > 0.01f)
-        {
-            windowLight2D.intensity = Mathf.MoveTowards(
-                windowLight2D.intensity,
-                0f,
-                fadeOutSpeed * Time.deltaTime
-            );
+        if (!fading || windowLight2D == null) return;
 
-            if (windowSprite != null)
-                windowSprite.color = Color.Lerp(
-                    windowSprite.color,
-                    spriteOriginalColor,
-                    fadeOutSpeed * Time.deltaTime
-                );
-
-            yield return null;
-        }
-
-        if (windowLight2D != null)
-            windowLight2D.intensity = 0f;
+        windowLight2D.intensity = Mathf.MoveTowards(
+            windowLight2D.intensity, 0f, fadeOutSpeed * deltaTime
+        );
 
         if (windowSprite != null)
-            windowSprite.color = spriteOriginalColor;
+            windowSprite.color = Color.Lerp(
+                windowSprite.color, spriteOriginalColor, fadeOutSpeed * deltaTime
+            );
+
+        if (windowLight2D.intensity <= 0.01f)
+        {
+            windowLight2D.intensity = 0f;
+            if (windowSprite != null)
+                windowSprite.color = spriteOriginalColor;
+            fading = false;
+        }
     }
 }

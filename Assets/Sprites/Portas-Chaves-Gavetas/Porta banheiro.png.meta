@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 6dee1f6d13a61c640a7a4acc1d4b840c
+guid: 2f0c39f731dbdba4ab5c731f65430122
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9035858241761654562
-    second: PortaV2 (1)_0
+      213: 3747723510313424191
+    second: Porta banheiro_0
   - first:
-      213: 2557786532047589054
-    second: PortaV2 (1)_1
+      213: 8003710374260426309
+    second: Porta banheiro_1
   - first:
-      213: -5301649751448283982
-    second: PortaV2 (1)_2
+      213: -8459560160268887644
+    second: Porta banheiro_2
   - first:
-      213: 1161422945681709030
-    second: PortaV2 (1)_3
+      213: -6301682457279641520
+    second: Porta banheiro_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,30 +105,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PortaV2 (1)_0
+      name: Porta banheiro_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 920
-        width: 226
-        height: 263
+        x: 183
+        y: 1652
+        width: 358
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed8c20b9dce2a9280800000000000000
-      internalID: -9035858241761654562
+      spriteID: f359c942da6920430800000000000000
+      internalID: 3747723510313424191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PortaV2 (1)_1
+      name: Porta banheiro_1
       rect:
         serializedVersion: 2
-        x: 22
-        y: 595
-        width: 226
-        height: 292
+        x: 183
+        y: 1069
+        width: 357
+        height: 538
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebe89f59c451f7320800000000000000
-      internalID: 2557786532047589054
+      spriteID: 546c6ee0e24e21f60800000000000000
+      internalID: 8003710374260426309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PortaV2 (1)_2
+      name: Porta banheiro_2
       rect:
         serializedVersion: 2
-        x: 22
-        y: 298
-        width: 226
-        height: 284
+        x: 184
+        y: 511
+        width: 357
+        height: 544
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b41361f3a1cc66b0800000000000000
-      internalID: -5301649751448283982
+      spriteID: 4a9502bdada999a80800000000000000
+      internalID: -8459560160268887644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PortaV2 (1)_3
+      name: Porta banheiro_3
       rect:
         serializedVersion: 2
-        x: 22
-        y: 18
-        width: 227
-        height: 269
+        x: 183
+        y: 4
+        width: 357
+        height: 502
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e7985ff3043e1010800000000000000
-      internalID: 1161422945681709030
+      spriteID: 058498e513deb88a0800000000000000
+      internalID: -6301682457279641520
       vertices: []
       indices: 
       edges: []
@@ -223,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PortaV2 (1)_0: -9035858241761654562
-      PortaV2 (1)_1: 2557786532047589054
-      PortaV2 (1)_2: -5301649751448283982
-      PortaV2 (1)_3: 1161422945681709030
+      Porta banheiro_0: 3747723510313424191
+      Porta banheiro_1: 8003710374260426309
+      Porta banheiro_2: -8459560160268887644
+      Porta banheiro_3: -6301682457279641520
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

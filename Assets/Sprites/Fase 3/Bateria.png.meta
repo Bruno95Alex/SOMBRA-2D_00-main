@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 6dee1f6d13a61c640a7a4acc1d4b840c
+guid: a54d26cb00439ad41ae1bba5661b13e4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9035858241761654562
-    second: PortaV2 (1)_0
+      213: 3469178385484208995
+    second: Bateria_0
   - first:
-      213: 2557786532047589054
-    second: PortaV2 (1)_1
+      213: -4903254553845163760
+    second: Bateria_1
   - first:
-      213: -5301649751448283982
-    second: PortaV2 (1)_2
+      213: -2307794284884632615
+    second: Bateria_2
   - first:
-      213: 1161422945681709030
-    second: PortaV2 (1)_3
+      213: -7017983711608374906
+    second: Bateria_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -84,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -105,30 +105,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PortaV2 (1)_0
+      name: Bateria_0
       rect:
         serializedVersion: 2
-        x: 22
-        y: 920
-        width: 226
-        height: 263
+        x: 105
+        y: 626
+        width: 550
+        height: 355
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed8c20b9dce2a9280800000000000000
-      internalID: -9035858241761654562
+      spriteID: 36bdf317c5ff42030800000000000000
+      internalID: 3469178385484208995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PortaV2 (1)_1
+      name: Bateria_1
       rect:
         serializedVersion: 2
-        x: 22
-        y: 595
-        width: 226
-        height: 292
+        x: 797
+        y: 602
+        width: 527
+        height: 396
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,20 +146,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ebe89f59c451f7320800000000000000
-      internalID: 2557786532047589054
+      spriteID: 0191eba36f324fbb0800000000000000
+      internalID: -4903254553845163760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PortaV2 (1)_2
+      name: Bateria_2
       rect:
         serializedVersion: 2
-        x: 22
-        y: 298
-        width: 226
-        height: 284
+        x: 105
+        y: 139
+        width: 543
+        height: 395
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +168,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b41361f3a1cc66b0800000000000000
-      internalID: -5301649751448283982
+      spriteID: 9db56ca335119ffd0800000000000000
+      internalID: -2307794284884632615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PortaV2 (1)_3
+      name: Bateria_3
       rect:
         serializedVersion: 2
-        x: 22
-        y: 18
-        width: 227
-        height: 269
+        x: 798
+        y: 139
+        width: 526
+        height: 395
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e7985ff3043e1010800000000000000
-      internalID: 1161422945681709030
+      spriteID: 689fa164ffc1b9e90800000000000000
+      internalID: -7017983711608374906
       vertices: []
       indices: 
       edges: []
@@ -223,10 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PortaV2 (1)_0: -9035858241761654562
-      PortaV2 (1)_1: 2557786532047589054
-      PortaV2 (1)_2: -5301649751448283982
-      PortaV2 (1)_3: 1161422945681709030
+      Bateria_0: 3469178385484208995
+      Bateria_1: -4903254553845163760
+      Bateria_2: -2307794284884632615
+      Bateria_3: -7017983711608374906
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

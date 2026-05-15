@@ -2,41 +2,37 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
 
-/// <summary>
-/// Sistema de relâmpagos com luz entrando por janelas e som de trovão.
-///
-/// SETUP:
-/// 1. Crie um GameObject vazio na cena chamado "LightningSystem"
-/// 2. Adicione este script nele
-/// 3. Em cada janela da cena, adicione o script "WindowLight"
-/// 4. Arraste as referências no Inspector
-/// </summary>
 public class LightningSystem : MonoBehaviour
 {
     public static LightningSystem Instance;
 
-    [Header("Intervalo entre relâmpagos")]
-    [SerializeField] private float intervalMin = 4f;
-    [SerializeField] private float intervalMax = 12f;
+    [Header("Intervalo entre relâmpagos (aleatório real)")]
+    [SerializeField] private float intervalBase = 8f; // tempo médio — quanto maior, mais raro
 
-    [Header("Luz global do relâmpago (Global Light 2D da cena)")]
+    [Header("Luz global (Global Light 2D da cena)")]
     [SerializeField] private Light2D globalLight;
-    [SerializeField] private float globalLightNormal    = 0.04f; // intensidade base da noite
-    [SerializeField] private float globalLightFlash     = 0.55f; // intensidade do flash
+    [SerializeField] private float globalLightNormal = 0.04f;
+    [SerializeField] private float globalLightFlash  = 0.55f;
 
-    [Header("Som")]
+    [Header("Som do trovão")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] thunderClips;  // coloque 2-3 sons diferentes
-    [SerializeField] private float thunderDelayMin = 0.4f; // delay entre flash e trovão
+    [SerializeField] private AudioClip[] thunderClips;
+    [SerializeField] private float thunderDelayMin = 0.4f;
     [SerializeField] private float thunderDelayMax = 1.2f;
+    [SerializeField] [Range(0f, 1f)] private float thunderVolumeMin = 0.2f;
+    [SerializeField] [Range(0f, 1f)] private float thunderVolumeMax = 0.9f;
 
     [Header("Flash")]
-    [SerializeField] private float flashDuration   = 0.08f; // duração de cada piscada
-    [SerializeField] private int   flashCount      = 3;     // quantas piscadas por relâmpago
-    [SerializeField] private float flashInterval   = 0.12f; // intervalo entre piscadas
+    [SerializeField] private float flashDuration = 0.08f;
+    [SerializeField] private int   flashCount    = 3;
+    [SerializeField] private float flashInterval = 0.12f;
 
-    // janelas registradas na cena
+    [Header("Janelas (arraste manualmente se necessário)")]
+    [SerializeField] private WindowLight[] windowsManual;
+
     private WindowLight[] windows;
+    private bool lightningActive = false;
+    public bool IsLightningActive() => lightningActive;
 
     void Awake()
     {
@@ -45,7 +41,7 @@ public class LightningSystem : MonoBehaviour
 
     void Start()
     {
-        windows = FindObjectsByType<WindowLight>(FindObjectsSortMode.None);
+        BuscarJanelas();
 
         if (globalLight == null)
             Debug.LogWarning("LightningSystem: Global Light 2D não atribuído.");
@@ -53,89 +49,98 @@ public class LightningSystem : MonoBehaviour
         StartCoroutine(LightningLoop());
     }
 
+    void BuscarJanelas()
+    {
+        windows = FindObjectsByType<WindowLight>(
+            FindObjectsInactive.Include,
+            FindObjectsSortMode.None
+        );
+
+        if ((windows == null || windows.Length == 0) && windowsManual.Length > 0)
+            windows = windowsManual;
+
+        if (windows == null || windows.Length == 0)
+            Debug.LogWarning("LightningSystem: nenhuma WindowLight encontrada.");
+        else
+            Debug.Log($"LightningSystem: {windows.Length} janela(s) encontrada(s).");
+    }
+
+    void Update()
+    {
+        if (windows == null) return;
+        foreach (var w in windows)
+            if (w != null) w.Tick(Time.deltaTime);
+    }
+
     // =========================
-    // LOOP PRINCIPAL
+    // LOOP — TEMPO ALEATÓRIO REAL
+    // distribuição exponencial: sem min/max fixo,
+    // às vezes vem logo, às vezes demora muito
     // =========================
 
     IEnumerator LightningLoop()
     {
+        yield return null;
+        BuscarJanelas();
+
         while (true)
         {
-            float wait = Random.Range(intervalMin, intervalMax);
+            // distribuição exponencial — simula trovões reais
+            // -ln(random) * base dá tempos imprevisíveis naturais
+            float wait = -Mathf.Log(Random.value) * intervalBase;
+            wait = Mathf.Max(2f, wait); // mínimo de 2s para não sobrepor
             yield return new WaitForSeconds(wait);
 
             yield return StartCoroutine(DoLightning());
         }
     }
 
-    // =========================
-    // RELÂMPAGO
-    // =========================
-
     IEnumerator DoLightning()
     {
-        // escolhe uma janela aleatória (ou todas)
+        lightningActive = true;
+
         WindowLight[] targets = EscolherJanelas();
 
-        // sequência de piscadas
         for (int i = 0; i < flashCount; i++)
         {
             FlashOn(targets);
             yield return new WaitForSeconds(flashDuration);
-
             FlashOff(targets);
 
             if (i < flashCount - 1)
                 yield return new WaitForSeconds(flashInterval);
         }
 
-        // trovão com delay (distância simulada)
-        float delay = Random.Range(thunderDelayMin, thunderDelayMax);
+        lightningActive = false;
+
+        // delay aleatório entre flash e trovão
+        float delay = -Mathf.Log(Random.value) * ((thunderDelayMin + thunderDelayMax) / 2f);
+        delay = Mathf.Clamp(delay, thunderDelayMin, thunderDelayMax * 2f);
         StartCoroutine(PlayThunder(delay));
     }
 
-    // =========================
-    // FLASH ON / OFF
-    // =========================
-
     void FlashOn(WindowLight[] targets)
     {
-        if (globalLight != null)
-            globalLight.intensity = globalLightFlash;
-
-        foreach (var w in targets)
-            w.FlashOn();
+        if (globalLight != null) globalLight.intensity = globalLightFlash;
+        foreach (var w in targets) if (w != null) w.FlashOn();
     }
 
     void FlashOff(WindowLight[] targets)
     {
-        if (globalLight != null)
-            globalLight.intensity = globalLightNormal;
-
-        foreach (var w in targets)
-            w.FlashOff();
+        if (globalLight != null) globalLight.intensity = globalLightNormal;
+        foreach (var w in targets) if (w != null) w.FlashOff();
     }
-
-    // =========================
-    // ESCOLHER JANELAS
-    // =========================
 
     WindowLight[] EscolherJanelas()
     {
-        if (windows == null || windows.Length == 0)
-            return new WindowLight[0];
+        if (windows == null || windows.Length == 0) return new WindowLight[0];
 
-        // chance de iluminar todas ou só algumas
-        bool iluminarTodas = Random.value > 0.4f;
+        bool todas = Random.value > 0.4f;
+        if (todas) return windows;
 
-        if (iluminarTodas)
-            return windows;
-
-        // escolhe entre 1 e metade das janelas aleatoriamente
         int count = Random.Range(1, Mathf.Max(2, windows.Length / 2 + 1));
         WindowLight[] shuffled = (WindowLight[])windows.Clone();
 
-        // embaralha
         for (int i = shuffled.Length - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
@@ -143,25 +148,19 @@ public class LightningSystem : MonoBehaviour
         }
 
         WindowLight[] result = new WindowLight[count];
-        for (int i = 0; i < count; i++)
-            result[i] = shuffled[i];
-
+        for (int i = 0; i < count; i++) result[i] = shuffled[i];
         return result;
     }
-
-    // =========================
-    // TROVÃO
-    // =========================
 
     IEnumerator PlayThunder(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        if (audioSource == null || thunderClips == null || thunderClips.Length == 0)
-            yield break;
+        if (audioSource == null || thunderClips == null || thunderClips.Length == 0) yield break;
 
+        // clipe e volume completamente aleatórios a cada trovão
         AudioClip clip = thunderClips[Random.Range(0, thunderClips.Length)];
-        audioSource.volume = Random.Range(0.7f, 1f);
+        audioSource.volume = Random.Range(thunderVolumeMin, thunderVolumeMax);
         audioSource.PlayOneShot(clip);
     }
 }
