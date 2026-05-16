@@ -1,20 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// Toca música de fundo em loop com fade entre faixas.
-/// Coloque num GameObject vazio chamado "MusicManager".
-///
-/// SETUP:
-/// 1. Crie um GameObject vazio e adicione este script
-/// 2. Arraste os clipes de música no campo "Tracks"
-/// 3. Ajuste o volume e o tempo de fade no Inspector
-/// </summary>
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
 
-    [Header("Músicas (tocam em sequência ou aleatório)")]
+    [Header("Músicas")]
     [SerializeField] private AudioClip[] tracks;
     [SerializeField] private bool randomOrder = false;
 
@@ -31,7 +22,6 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton persistente entre cenas
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -42,8 +32,9 @@ public class MusicManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.loop   = false;
-        audioSource.volume = 0f;
+        audioSource.loop        = false;
+        audioSource.volume      = 0f;
+        audioSource.playOnAwake = false;
     }
 
     void Start()
@@ -59,14 +50,9 @@ public class MusicManager : MonoBehaviour
 
     void Update()
     {
-        // quando a faixa termina, passa para a próxima
-        if (!audioSource.isPlaying && !transitioning && tracks.Length > 0)
+        if (!audioSource.isPlaying && !transitioning && tracks != null && tracks.Length > 0)
             StartCoroutine(NextTrack());
     }
-
-    // =========================
-    // TOCAR FAIXA ATUAL
-    // =========================
 
     void PlayCurrentTrack()
     {
@@ -74,13 +60,8 @@ public class MusicManager : MonoBehaviour
 
         audioSource.clip = tracks[currentIndex];
         audioSource.Play();
-
         StartCoroutine(FadeIn());
     }
-
-    // =========================
-    // PRÓXIMA FAIXA
-    // =========================
 
     IEnumerator NextTrack()
     {
@@ -103,10 +84,6 @@ public class MusicManager : MonoBehaviour
         PlayCurrentTrack();
         transitioning = false;
     }
-
-    // =========================
-    // FADE IN / OUT
-    // =========================
 
     IEnumerator FadeIn()
     {
@@ -134,24 +111,7 @@ public class MusicManager : MonoBehaviour
         audioSource.Stop();
     }
 
-    // =========================
-    // CONTROLES EXTERNOS
-    // =========================
-
-    /// <summary>Pausa a música com fade.</summary>
-    public void Pause() => StartCoroutine(FadeOut());
-
-    /// <summary>Retoma a música com fade.</summary>
-    public void Resume()
-    {
-        audioSource.Play();
-        StartCoroutine(FadeIn());
-    }
-
-    /// <summary>Muda o volume em tempo real.</summary>
-    public void SetVolume(float v)
-    {
-        volume = Mathf.Clamp01(v);
-        audioSource.volume = volume;
-    }
+    public void Pause()   => StartCoroutine(FadeOut());
+    public void Resume()  { audioSource.Play(); StartCoroutine(FadeIn()); }
+    public void SetVolume(float v) { volume = Mathf.Clamp01(v); audioSource.volume = volume; }
 }

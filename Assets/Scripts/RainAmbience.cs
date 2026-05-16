@@ -1,16 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-/// <summary>
-/// Toca som de chuva em loop contínuo.
-/// Separado do MusicManager para controle de volume independente.
-/// Persiste entre cenas.
-///
-/// SETUP:
-/// 1. Crie um GameObject vazio chamado "RainAmbience"
-/// 2. Adicione este script
-/// 3. Arraste o clipe de chuva no campo "Rain Clip"
-/// </summary>
 public class RainAmbience : MonoBehaviour
 {
     public static RainAmbience Instance;
@@ -35,10 +25,14 @@ public class RainAmbience : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
+        // AudioSource separado do MusicManager — cada um tem o seu próprio componente
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip   = rainClip;
-        audioSource.loop   = true;
-        audioSource.volume = 0f;
+        audioSource.loop        = true;
+        audioSource.volume      = 0f;
+        audioSource.playOnAwake = false;
+
+        // garante que o clip serializado é atribuído depois do AddComponent
+        audioSource.clip = rainClip;
     }
 
     void Start()
@@ -49,6 +43,8 @@ public class RainAmbience : MonoBehaviour
             return;
         }
 
+        // re-atribui o clip aqui por segurança
+        audioSource.clip = rainClip;
         audioSource.Play();
         StartCoroutine(FadeIn());
     }
@@ -65,7 +61,6 @@ public class RainAmbience : MonoBehaviour
         audioSource.volume = volume;
     }
 
-    /// <summary>Muda o volume em tempo real (ex: dentro de casa = mais baixo).</summary>
     public void SetVolume(float v)
     {
         volume = Mathf.Clamp01(v);
