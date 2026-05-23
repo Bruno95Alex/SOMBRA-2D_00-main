@@ -39,6 +39,9 @@ public class PlayerController : Singleton<PlayerController>
 
     private bool isDead = false;
 
+    [SerializeField] private float deathDuration = 1.5f;
+    [SerializeField] private float reviveDuration = 1f;
+
     // =========================
     // AWAKE
     // =========================
@@ -105,6 +108,12 @@ public class PlayerController : Singleton<PlayerController>
         {
             lastDirection = movement;
         }
+
+        myAnimator.SetFloat("moveX", movement.x);
+        myAnimator.SetFloat("moveY", movement.y);
+
+        myAnimator.SetFloat("lastMoveX", lastDirection.x);
+        myAnimator.SetFloat("lastMoveY", lastDirection.y);
     }
 
     // =========================
@@ -269,44 +278,101 @@ public class PlayerController : Singleton<PlayerController>
         StartCoroutine(DieRoutine());
     }
 
-    private IEnumerator DieRoutine()
-    {
-        isDead = true;
+    // private IEnumerator DieRoutine()
+    // {
+    //     isDead = true;
 
-        // Para movimento
-        movement = Vector2.zero;
-        rb.linearVelocity = Vector2.zero;
-        playerControls.Disable();
+    //     // Para movimento
+    //     movement = Vector2.zero;
+    //     rb.linearVelocity = Vector2.zero;
+    //     playerControls.Disable();
 
-        // Fade para preto
-        if (UIFade.Instance != null)
-            yield return StartCoroutine(UIFade.Instance.FadeOut());
+    //     // Fade para preto
+    //     if (UIFade.Instance != null)
+    //         yield return StartCoroutine(UIFade.Instance.FadeOut());
 
-        Respawn();
+    //     Respawn();
 
-        // Volta a imagem
-        if (UIFade.Instance != null)
-            yield return StartCoroutine(UIFade.Instance.FadeIn());
+    //     // Volta a imagem
+    //     if (UIFade.Instance != null)
+    //         yield return StartCoroutine(UIFade.Instance.FadeIn());
 
-        playerControls.Enable();
-        isDead = false;
-    }
+    //     playerControls.Enable();
+    //     isDead = false;
+    // }
+
+private IEnumerator DieRoutine()
+{
+    isDead = true;
+
+    // trava player
+    movement = Vector2.zero;
+    rb.linearVelocity = Vector2.zero;
+
+    playerControls.Disable();
+
+    // animação morte
+    myAnimator.SetTrigger("death");
+
+    // espera morte
+    yield return new WaitForSeconds(deathDuration);
+
+    // fade preto
+    if (UIFade.Instance != null)
+        yield return StartCoroutine(UIFade.Instance.FadeOut());
+
+    yield return new WaitForSeconds(0.2f);
+
+    // respawn
+    Respawn();
+
+    // volta imagem PRIMEIRO
+    if (UIFade.Instance != null)
+        yield return StartCoroutine(UIFade.Instance.FadeIn());
+
+    // AGORA toca revive
+    myAnimator.SetTrigger("revive");
+
+    // espera revive terminar
+    yield return new WaitForSeconds(reviveDuration);
+
+    playerControls.Enable();
+
+    isDead = false;
+}
 
     // =========================
     // RESPAWN
     // =========================
 
+    // private void Respawn()
+    // {
+    //     transform.position = checkpointPosition;
+
+    //     altura = 0f;
+    //     velocidadeY = 0f;
+    //     estaNoChao = true;
+    //     estaSobrePoca = false;
+    //     movement = Vector2.zero;
+    //     rb.linearVelocity = Vector2.zero;
+
+    //     ReativarColisoesJumpable();
+    // }
+
     private void Respawn()
-    {
-        transform.position = checkpointPosition;
+{
+    transform.position = checkpointPosition;
 
-        altura = 0f;
-        velocidadeY = 0f;
-        estaNoChao = true;
-        estaSobrePoca = false;
-        movement = Vector2.zero;
-        rb.linearVelocity = Vector2.zero;
+    altura = 0f;
+    velocidadeY = 0f;
 
-        ReativarColisoesJumpable();
-    }
+    estaNoChao = true;
+    estaSobrePoca = false;
+
+    movement = Vector2.zero;
+
+    rb.linearVelocity = Vector2.zero;
+
+    ReativarColisoesJumpable();
+}
 }
