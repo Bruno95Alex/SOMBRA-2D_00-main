@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class ItemPickup : MonoBehaviour
 {
@@ -9,7 +8,11 @@ public class ItemPickup : MonoBehaviour
 
     void Update()
     {
-        if (playerNear && Keyboard.current.fKey.wasPressedThisFrame)
+        bool interact = InputReader.Instance != null
+            ? InputReader.Instance.InteractPressed
+            : UnityEngine.InputSystem.Keyboard.current.fKey.wasPressedThisFrame;
+
+        if (playerNear && interact)
         {
             InventorySystem.Instance.AddItem(itemData);
             UIMessage.Instance.Hide();
@@ -22,7 +25,7 @@ public class ItemPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNear = true;
-            UIMessage.Instance.Show("Pressione F para pegar", 999f);
+            UIMessage.Instance.Show("Pressione F / botão para pegar", 999f);
         }
     }
 

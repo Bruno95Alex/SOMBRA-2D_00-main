@@ -19,31 +19,23 @@ public class DialogueUI : MonoBehaviour
     private bool canAdvance;
     private bool justClosedDialogue;
 
-    // =========================
-
     private void Awake()
     {
         Instance = this;
-
-        if (panel != null)
-            panel.SetActive(false);
+        if (panel != null) panel.SetActive(false);
     }
-
-    // =========================
 
     private void Update()
     {
         if (!dialogueActive || !canAdvance) return;
 
-        if (Keyboard.current.fKey.wasPressedThisFrame)
-        {
-            NextLine();
-        }
-    }
+        // teclado F OU Triângulo (InteractPressed) para avançar diálogo
+        bool advance = (Keyboard.current != null && Keyboard.current.fKey.wasPressedThisFrame)
+                    || (InputReader.Instance != null && InputReader.Instance.InteractPressed);
 
-    // =========================
-    // INICIAR DIÁLOGO
-    // =========================
+        if (advance)
+            NextLine();
+    }
 
     public void StartDialogue(string speaker, string[] dialogueLines)
     {
@@ -52,11 +44,10 @@ public class DialogueUI : MonoBehaviour
         lines = dialogueLines;
         index = 0;
 
-        nameText.text = speaker;
+        nameText.text    = speaker;
         dialogueText.text = lines[index];
 
-        if (continueText != null)
-            continueText.SetActive(true);
+        if (continueText != null) continueText.SetActive(true);
 
         StartCoroutine(EnableAdvance());
     }
@@ -68,10 +59,6 @@ public class DialogueUI : MonoBehaviour
         yield return null;
         canAdvance = true;
     }
-
-    // =========================
-    // PRÓXIMA LINHA
-    // =========================
 
     private void NextLine()
     {
@@ -86,18 +73,13 @@ public class DialogueUI : MonoBehaviour
         dialogueText.text = lines[index];
     }
 
-    // =========================
-    // FINALIZAR
-    // =========================
-
     private void EndDialogue()
     {
         dialogueActive = false;
-        canAdvance = false;
+        canAdvance     = false;
         panel.SetActive(false);
 
-        if (continueText != null)
-            continueText.SetActive(false);
+        if (continueText != null) continueText.SetActive(false);
 
         StartCoroutine(DialogueCooldown());
     }
@@ -105,12 +87,10 @@ public class DialogueUI : MonoBehaviour
     IEnumerator DialogueCooldown()
     {
         justClosedDialogue = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         justClosedDialogue = false;
     }
 
-    // =========================
-
-    public bool IsDialogueActive() => dialogueActive;
+    public bool IsDialogueActive()   => dialogueActive;
     public bool JustClosedDialogue() => justClosedDialogue;
 }

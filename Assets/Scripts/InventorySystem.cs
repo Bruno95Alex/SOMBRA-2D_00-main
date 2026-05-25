@@ -21,61 +21,36 @@ public class InventorySystem : MonoBehaviour
 
     public void AddItem(ItemData item)
     {
-        if (item == null)
-        {
-            Debug.LogError("Item NULL!");
-            return;
-        }
-
-        if (itens.Count >= slots.Count)
-        {
-            Debug.Log("Inventário cheio");
-            return;
-        }
+        if (item == null) { Debug.LogError("Item NULL!"); return; }
+        if (itens.Count >= slots.Count) { Debug.Log("Inventário cheio"); return; }
 
         itens.Add(item);
-
         int index = itens.Count - 1;
 
-        if (slots[index] == null)
-        {
-            Debug.LogError("Slot não atribuído no Inspector!");
-            return;
-        }
-
-        if (item.icon == null)
-            Debug.LogError("Item sem ícone: " + item.itemName);
+        if (slots[index] == null) { Debug.LogError("Slot não atribuído!"); return; }
+        if (item.icon == null) Debug.LogError("Item sem ícone: " + item.itemName);
 
         slots[index].sprite = item.icon;
-        slots[index].color = Color.white;
+        slots[index].color  = Color.white;
 
         Button btn = slots[index].GetComponent<Button>();
-
         if (btn != null)
         {
-            int slotIndex = index;
+            int i = index;
             btn.onClick.RemoveAllListeners();
-            btn.onClick.AddListener(() => SelectItem(slotIndex));
+            btn.onClick.AddListener(() => SelectItem(i));
         }
     }
 
     // ================================
-    // VERIFICAR ITEM
+    // VERIFICAR / REMOVER
     // ================================
 
-    public bool HasItem(ItemData item)
-    {
-        return itens.Contains(item);
-    }
-
-    // ================================
-    // REMOVER ITEM
-    // ================================
+    public bool HasItem(ItemData item)   => itens.Contains(item);
 
     public void RemoveItem(ItemData item)
     {
         if (!itens.Contains(item)) return;
-
         itens.Remove(item);
         UpdateUI();
     }
@@ -88,39 +63,49 @@ public class InventorySystem : MonoBehaviour
     {
         for (int i = 0; i < slots.Count; i++)
         {
-            if (slots[i] == null)
-            {
-                Debug.LogError("Slot NULL no índice: " + i);
-                continue;
-            }
+            if (slots[i] == null) continue;
 
-            if (i < itens.Count)
+            if (i < itens.Count && itens[i] != null)
             {
-                if (itens[i] == null)
-                {
-                    Debug.LogError("Item NULL no índice: " + i);
-                    continue;
-                }
-
                 slots[i].sprite = itens[i].icon;
-                slots[i].color = Color.white;
+                slots[i].color  = Color.white;
             }
             else
             {
                 slots[i].sprite = null;
-                slots[i].color = new Color(1, 1, 1, 0);
+                slots[i].color  = new Color(1, 1, 1, 0);
             }
         }
     }
 
     // ================================
-    // SELECIONAR ITEM
+    // SELECIONAR ITEM (chamado pelo botão OU pelo InventoryUI via controle)
     // ================================
 
     public void SelectItem(int index)
     {
         if (index < 0 || index >= itens.Count) return;
-
         InventoryUI.Instance.ShowItemOptions(itens[index]);
+    }
+
+    // ================================
+    // UTILITÁRIOS para o InventoryUI
+    // ================================
+
+    public int SlotCount  => slots.Count;
+    public int ItemCount  => itens.Count;
+
+    public Image GetSlotImage(int index)
+    {
+        if (index < 0 || index >= slots.Count) return null;
+        return slots[index];
+    }
+
+    public bool SlotHasItem(int index) => index >= 0 && index < itens.Count;
+
+    public Color GetSlotOriginalColor(int index)
+    {
+        // slots vazios têm alpha 0, slots com item têm alpha 1
+        return SlotHasItem(index) ? Color.white : new Color(1, 1, 1, 0);
     }
 }

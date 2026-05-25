@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class DoorLocked : MonoBehaviour
 {
@@ -23,19 +22,20 @@ public class DoorLocked : MonoBehaviour
     {
         if (!playerNear || opened) return;
 
-        if (Keyboard.current.fKey.wasPressedThisFrame)
-        {
-            if (requiredItems.Length == 0)
-            {
-                UIMessage.Instance.Show("Esta porta está trancada.", 2f);
-                return;
-            }
+        bool interact = InputReader.Instance != null
+            ? InputReader.Instance.InteractPressed
+            : UnityEngine.InputSystem.Keyboard.current.fKey.wasPressedThisFrame;
 
-            if (HasAllItems())
-                OpenDoor();
-            else
-                UIMessage.Instance.Show("Faltam itens para poder sair", 2f);
+        if (!interact) return;
+
+        if (requiredItems.Length == 0)
+        {
+            UIMessage.Instance.Show("Esta porta está trancada.", 2f);
+            return;
         }
+
+        if (HasAllItems()) OpenDoor();
+        else UIMessage.Instance.Show("Faltam itens para poder sair", 2f);
     }
 
     bool HasAllItems()
@@ -50,13 +50,9 @@ public class DoorLocked : MonoBehaviour
     {
         foreach (ItemData item in requiredItems)
             InventorySystem.Instance.RemoveItem(item);
-
         AbrirAnimacao();
     }
 
-    /// <summary>
-    /// Chamado pelo CabinetPuzzleManager quando o puzzle é resolvido.
-    /// </summary>
     public void UnlockByPuzzle()
     {
         if (opened) return;
@@ -66,16 +62,10 @@ public class DoorLocked : MonoBehaviour
     void AbrirAnimacao()
     {
         UIMessage.Instance.Show("Abrindo porta...", 1.5f);
-
-        if (animator != null)
-            animator.SetTrigger("Open");
-
-        opened    = true;
+        if (animator != null) animator.SetTrigger("Open");
+        opened     = true;
         playerNear = false;
-
-        if (doorCollider != null)
-            doorCollider.enabled = false;
-
+        if (doorCollider != null) doorCollider.enabled = false;
         Invoke(nameof(HideMessage), 1.5f);
     }
 
@@ -84,19 +74,17 @@ public class DoorLocked : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (opened || !other.CompareTag("Player")) return;
-
         playerNear = true;
-
-        if (requiredItems.Length == 0 || !HasAllItems())
-            UIMessage.Instance.Show("Porta trancada", 999f);
-        else
-            UIMessage.Instance.Show("Pressione F para abrir", 999f);
+        UIMessage.Instance.Show(
+            (requiredItems.Length == 0 || !HasAllItems())
+                ? "Porta trancada"
+                : "Pressione F / botão para abrir",
+            999f);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (opened || !other.CompareTag("Player")) return;
-
         playerNear = false;
         UIMessage.Instance.Hide();
     }

@@ -10,11 +10,11 @@ public class InventorySlotUI : MonoBehaviour
         item = newItem;
     }
 
+    public ItemData GetItem() => item;
+
     public void OnClick()
     {
         if (item == null) return;
-
-        //InventoryUI.Instance.OpenOptions(item, transform.position);
         InventoryUI.Instance.ShowItemOptions(item);
     }
 }

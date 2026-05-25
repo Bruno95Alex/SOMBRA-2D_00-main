@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class DiaryPage : MonoBehaviour
 {
@@ -9,40 +8,38 @@ public class DiaryPage : MonoBehaviour
 
     void Update()
     {
-        if (playerNear && Keyboard.current.fKey.wasPressedThisFrame)
-        {
-            if (itemData == null)
-            {
-                Debug.LogError("DiaryPage sem ItemData!");
-                return;
-            }
+        if (!playerNear) return;
 
-            InventorySystem.Instance.AddItem(itemData);
+        // teclado F OU Triângulo via InputReader
+        bool interact = InputReader.Instance != null
+            ? InputReader.Instance.InteractPressed
+            : UnityEngine.InputSystem.Keyboard.current.fKey.wasPressedThisFrame;
 
-            if (DiaryUI.Instance != null)
-                DiaryUI.Instance.ShowPage(itemData.description);
-            else
-                Debug.LogError("DiaryUI não encontrado!");
+        if (!interact) return;
 
-            Destroy(gameObject);
-        }
+        if (itemData == null) { Debug.LogError("DiaryPage sem ItemData!"); return; }
+
+        InventorySystem.Instance.AddItem(itemData);
+
+        if (DiaryUI.Instance != null)
+            DiaryUI.Instance.ShowPage(itemData.description);
+        else
+            Debug.LogError("DiaryUI não encontrado!");
+
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerNear = true;
-            UIMessage.Instance.Show("Pressione F para ler", 999f);
-        }
+        if (!other.CompareTag("Player")) return;
+        playerNear = true;
+        UIMessage.Instance.Show("Pressione F / botão para ler", 999f);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerNear = false;
-            UIMessage.Instance.Hide();
-        }
+        if (!other.CompareTag("Player")) return;
+        playerNear = false;
+        UIMessage.Instance.Hide();
     }
 }

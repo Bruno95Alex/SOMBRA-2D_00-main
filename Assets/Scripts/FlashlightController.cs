@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 public class FlashlightController : MonoBehaviour
 {
     [SerializeField] private Transform flashlight;
+    [SerializeField] private float rotationSpeed = 12f; // suavidade da rotação
 
     private Camera cam;
     private bool ligada;
+    private float currentAngle = 0f;
+    private float targetAngle  = 0f;
+
+    // guarda última direção do controle para não cair no mouse ao soltar o stick
+    private bool usandoControle = false;
 
     void Awake()
     {
         AtualizarCamera();
-
         flashlight.gameObject.SetActive(false);
-
         SceneManager.sceneLoaded += QuandoTrocarCena;
     }
 
@@ -23,24 +27,22 @@ public class FlashlightController : MonoBehaviour
         SceneManager.sceneLoaded -= QuandoTrocarCena;
     }
 
-    void QuandoTrocarCena(Scene scene, LoadSceneMode mode)
-    {
-        AtualizarCamera();
-    }
+    void QuandoTrocarCena(Scene scene, LoadSceneMode mode) => AtualizarCamera();
 
     void AtualizarCamera()
     {
         cam = Camera.main;
-
         if (cam == null)
-        {
-            Debug.LogWarning("Camera principal não encontrada ainda...");
-        }
+            Debug.LogWarning("FlashlightController: camera não encontrada.");
     }
 
     void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        bool toggle = InputReader.Instance != null
+            ? InputReader.Instance.FlashlightPressed
+            : Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame;
+
+        if (toggle)
         {
             ligada = !ligada;
             flashlight.gameObject.SetActive(ligada);
@@ -49,30 +51,41 @@ public class FlashlightController : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!ligada)
-            return;
+        if (!ligada || cam == null) return;
 
-        if (cam == null)
+        Vector2 aim = InputReader.Instance != null
+            ? InputReader.Instance.AimInput
+            : Vector2.zero;
+
+        if (aim.magnitude > 0.2f)
         {
-            AtualizarCamera();
-            return;
+            // stick sendo movido — marca que está no controle e calcula ângulo alvo
+            usandoControle = true;
+            targetAngle = Mathf.Atan2(aim.y, aim.x) * Mathf.Rad2Deg - 90f;
         }
+        else if (!usandoControle)
+        {
+            // só usa mouse se NÃO estiver no modo controle
+            if (Mouse.current == null) return;
 
-        Vector3 mouseScreenPos = Mouse.current.position.ReadValue();
+            Vector3 mouseScreen = Mouse.current.position.ReadValue();
+            Vector3 mouseWorld  = cam.ScreenToWorldPoint(
+                new Vector3(mouseScreen.x, mouseScreen.y,
+                            Mathf.Abs(cam.transform.position.z)));
 
-        Vector3 mouseWorldPos = cam.ScreenToWorldPoint(
-            new Vector3(
-                mouseScreenPos.x,
-                mouseScreenPos.y,
-                Mathf.Abs(cam.transform.position.z)
-            )
-        );
+            Vector2 dir = (Vector2)(mouseWorld - transform.position);
+            if (dir.magnitude < 0.01f) return;
 
-        Vector2 direction = mouseWorldPos - transform.position;
+            targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
+        }
+        // se usandoControle=true e stick zerado: mantém targetAngle da última direção
 
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+        // detecta se voltou para teclado/mouse — reseta modo controle
+        if (InputReader.Instance != null && !InputReader.Instance.IsUsingController)
+            usandoControle = false;
 
-        flashlight.rotation = Quaternion.Euler(0, 0, angle);
+        // suaviza a rotação — LerpAngle lida com a virada de 360→0 corretamente
+        currentAngle = Mathf.LerpAngle(currentAngle, targetAngle, rotationSpeed * Time.deltaTime);
+        flashlight.rotation = Quaternion.Euler(0f, 0f, currentAngle);
     }
 }

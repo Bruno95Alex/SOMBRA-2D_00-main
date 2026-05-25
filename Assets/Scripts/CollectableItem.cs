@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CollectableItem : MonoBehaviour
 {
@@ -9,10 +8,12 @@ public class CollectableItem : MonoBehaviour
 
     void Update()
     {
-        if (playerPerto && Keyboard.current.fKey.wasPressedThisFrame)
-        {
+        bool interact = InputReader.Instance != null
+            ? InputReader.Instance.InteractPressed
+            : UnityEngine.InputSystem.Keyboard.current.fKey.wasPressedThisFrame;
+
+        if (playerPerto && interact)
             Coletar();
-        }
     }
 
     void Coletar()

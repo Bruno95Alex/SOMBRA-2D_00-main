@@ -16,10 +16,14 @@ public class DiaryUI : MonoBehaviour
 
     void Update()
     {
-        if (panel.activeSelf && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            Close();
-        }
+        if (!panel.activeSelf) return;
+
+        // fecha com Escape OU Bola (InventoryPressed) OU Triângulo
+        bool fechar = (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+                   || (InputReader.Instance != null && InputReader.Instance.InventoryPressed)
+                   || (InputReader.Instance != null && InputReader.Instance.InteractPressed);
+
+        if (fechar) Close();
     }
 
     public void ShowPage(string text)

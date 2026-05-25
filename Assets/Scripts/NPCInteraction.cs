@@ -19,162 +19,75 @@ public class NPCInteraction : MonoBehaviour
             interactUI.SetActive(false);
     }
 
-    // private void Update()
-    // {
-    //     if (!playerNear || player == null)
-    //         return;
-
-    //     LookAtPlayer();
-
-    //     if (Keyboard.current.fKey.wasPressedThisFrame)
-    //     {
-    //         Talk();
-    //     }
-    // }
-
-        private void Update()
+    private void Update()
     {
-        if (!playerNear || player == null)
-            return;
+        if (!playerNear || player == null) return;
 
         LookAtPlayer();
 
-        // 🔥 NÃO deixa abrir outro diálogo
         if (DialogueUI.Instance != null)
         {
-            if (DialogueUI.Instance.IsDialogueActive())
-                return;
-
-            // 🔥 impede reabrir instantaneamente
-            if (DialogueUI.Instance.JustClosedDialogue())
-                return;
+            if (DialogueUI.Instance.IsDialogueActive())  return;
+            if (DialogueUI.Instance.JustClosedDialogue()) return;
         }
 
-        if (Keyboard.current.fKey.wasPressedThisFrame)
-        {
+        // teclado F OU Triângulo no controle via InputReader
+        bool interact = InputReader.Instance != null
+            ? InputReader.Instance.InteractPressed
+            : Keyboard.current != null && Keyboard.current.fKey.wasPressedThisFrame;
+
+        if (interact)
             Talk();
-        }
     }
-
-
-    // =========================
-    // VIRAR PARA PLAYER
-    // =========================
 
     void LookAtPlayer()
-{
-    Vector2 dir = player.position - transform.position;
-
-    // decide direção dominante
-    if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
     {
-        // LADO
+        Vector2 dir = player.position - transform.position;
 
-        animator.SetFloat("moveY", 0);
-
-        if (dir.x > 0)
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
         {
-            // DIREITA
+            animator.SetFloat("moveY", 0);
             animator.SetFloat("moveX", 1);
-
-            // sprite original olhando pra DIREITA
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = dir.x < 0;
         }
         else
         {
-            // ESQUERDA
-            animator.SetFloat("moveX", 1);
-
-            spriteRenderer.flipX = true;
+            animator.SetFloat("moveX", 0);
+            animator.SetFloat("moveY", dir.y > 0 ? 1 : -1);
         }
     }
-    else
+
+    void Talk()
     {
-        // CIMA / BAIXO
+        if (DialogueUI.Instance == null) { Debug.LogError("DialogueUI não encontrado!"); return; }
 
-        animator.SetFloat("moveX", 0);
+        if (interactUI != null)
+            interactUI.SetActive(false);
 
-        if (dir.y > 0)
+        string[] lines =
         {
-            // CIMA
-            animator.SetFloat("moveY", 1);
-        }
-        else
-        {
-            // BAIXO
-            animator.SetFloat("moveY", -1);
-        }
+            "Algo estranho está acontecendo...",
+            "A energia caiu no campus.",
+            "Procure a chave do gerador.",
+            "Ela está no laboratório 6."
+        };
+
+        DialogueUI.Instance.StartDialogue("Vigia", lines);
     }
-}
-
-    // =========================
-    // DIÁLOGO
-    // =========================
-
-//     void Talk()
-// {
-//     if (DialogueUI.Instance.IsDialogueActive())
-//         return;
-
-//     string[] lines =
-//     {
-//         "Algo estranho está acontecendo...",
-//         "A energia caiu no campus.",
-//         "Procure a chave do gerador.",
-//         "Ela está no laboratório 6."
-//     };
-
-//     DialogueUI.Instance.StartDialogue("Vigia", lines);
-// }
-
-void Talk()
-{
-    if (DialogueUI.Instance == null)
-    {
-        Debug.LogError("DialogueUI não encontrado!");
-        return;
-    }
-
-    // 🔥 ESCONDE O TEXTO DE INTERAÇÃO
-    if (interactUI != null)
-        interactUI.SetActive(false);
-
-    string[] lines =
-    {
-        "Algo estranho está acontecendo...",
-        "A energia caiu no campus.",
-        "Procure a chave do gerador.",
-        "Ela está no laboratório 6."
-    };
-
-    DialogueUI.Instance.StartDialogue("Vigia", lines);
-}
-
-    // =========================
-    // TRIGGER
-    // =========================
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerNear = true;
-            player = other.transform;
-
-            if (interactUI != null)
-                interactUI.SetActive(true);
-        }
+        if (!other.CompareTag("Player")) return;
+        playerNear = true;
+        player = other.transform;
+        if (interactUI != null) interactUI.SetActive(true);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerNear = false;
-            player = null;
-
-            if (interactUI != null)
-                interactUI.SetActive(false);
-        }
+        if (!other.CompareTag("Player")) return;
+        playerNear = false;
+        player = null;
+        if (interactUI != null) interactUI.SetActive(false);
     }
 }

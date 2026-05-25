@@ -63,15 +63,8 @@ public class PlayerController : Singleton<PlayerController>
         checkpointPosition = transform.position;
     }
 
-    private void OnEnable()
-    {
-        playerControls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerControls.Disable();
-    }
+    private void OnEnable()  { playerControls.Enable(); }
+    private void OnDisable() { playerControls.Disable(); }
 
     // =========================
     // UPDATE
@@ -105,13 +98,10 @@ public class PlayerController : Singleton<PlayerController>
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
 
         if (movement != Vector2.zero)
-        {
             lastDirection = movement;
-        }
 
         myAnimator.SetFloat("moveX", movement.x);
         myAnimator.SetFloat("moveY", movement.y);
-
         myAnimator.SetFloat("lastMoveX", lastDirection.x);
         myAnimator.SetFloat("lastMoveY", lastDirection.y);
     }
@@ -122,10 +112,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Move()
     {
-        rb.MovePosition(
-            rb.position +
-            movement * moveSpeed * Time.fixedDeltaTime
-        );
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
     // =========================
@@ -138,14 +125,11 @@ public class PlayerController : Singleton<PlayerController>
 
         myAnimator.SetBool("isMoving", isMoving);
         myAnimator.SetBool("isGrounded", estaNoChao);
-
         myAnimator.SetFloat("moveX", movement.x);
         myAnimator.SetFloat("moveY", movement.y);
 
         if (isMoving)
-        {
             lastDirection = movement.normalized;
-        }
 
         myAnimator.SetFloat("lastMoveX", lastDirection.x);
         myAnimator.SetFloat("lastMoveY", lastDirection.y);
@@ -158,25 +142,25 @@ public class PlayerController : Singleton<PlayerController>
     private void AdjustPlayerFacingDirection()
     {
         if (movement.x > 0.1f)
-        {
             mySpriteRender.flipX = false;
-        }
         else if (movement.x < -0.1f)
-        {
             mySpriteRender.flipX = true;
-        }
     }
 
     // =========================
-    // PULO
+    // PULO — teclado (space) OU controle via InputReader
     // =========================
 
     private void HandleJump()
     {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame && estaNoChao)
+        bool jumpPressed = InputReader.Instance != null
+            ? InputReader.Instance.JumpPressed
+            : Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame;
+
+        if (jumpPressed && estaNoChao)
         {
             velocidadeY = jumpForce;
-            estaNoChao = false;
+            estaNoChao  = false;
         }
     }
 
@@ -185,18 +169,16 @@ public class PlayerController : Singleton<PlayerController>
         if (!estaNoChao)
         {
             velocidadeY -= gravity * Time.deltaTime;
-            altura += velocidadeY * Time.deltaTime;
+            altura      += velocidadeY * Time.deltaTime;
 
             if (altura <= 0f)
             {
-                altura = 0f;
+                altura      = 0f;
                 velocidadeY = 0f;
-                estaNoChao = true;
+                estaNoChao  = true;
 
                 if (estaSobrePoca)
-                {
                     Die();
-                }
 
                 ReativarColisoesJumpable();
             }
@@ -206,9 +188,7 @@ public class PlayerController : Singleton<PlayerController>
     private void UpdateVisualHeight()
     {
         if (visual != null)
-        {
             visual.localPosition = new Vector3(0, altura, 0);
-        }
     }
 
     // =========================
@@ -218,9 +198,7 @@ public class PlayerController : Singleton<PlayerController>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!estaNoChao && collision.gameObject.CompareTag("Jumpable"))
-        {
             Physics2D.IgnoreCollision(playerCol, collision.collider, true);
-        }
     }
 
     private void ReativarColisoesJumpable()
@@ -230,9 +208,7 @@ public class PlayerController : Singleton<PlayerController>
         foreach (var c in cols)
         {
             if (c.CompareTag("Jumpable"))
-            {
                 Physics2D.IgnoreCollision(playerCol, c, false);
-            }
         }
     }
 
@@ -247,9 +223,7 @@ public class PlayerController : Singleton<PlayerController>
             estaSobrePoca = true;
 
             if (estaNoChao)
-            {
                 Die();
-            }
         }
 
         if (collision.CompareTag("Checkpoint"))
@@ -262,9 +236,7 @@ public class PlayerController : Singleton<PlayerController>
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Puddle"))
-        {
             estaSobrePoca = false;
-        }
     }
 
     // =========================
@@ -274,105 +246,60 @@ public class PlayerController : Singleton<PlayerController>
     public void Die()
     {
         if (isDead) return;
-
         StartCoroutine(DieRoutine());
     }
 
-    // private IEnumerator DieRoutine()
-    // {
-    //     isDead = true;
+    private IEnumerator DieRoutine()
+    {
+        isDead = true;
 
-    //     // Para movimento
-    //     movement = Vector2.zero;
-    //     rb.linearVelocity = Vector2.zero;
-    //     playerControls.Disable();
+        if (movement != Vector2.zero)
+            lastDirection = movement.normalized;
 
-    //     // Fade para preto
-    //     if (UIFade.Instance != null)
-    //         yield return StartCoroutine(UIFade.Instance.FadeOut());
+        myAnimator.SetFloat("lastMoveX", lastDirection.x);
+        myAnimator.SetFloat("lastMoveY", lastDirection.y);
 
-    //     Respawn();
+        movement = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
 
-    //     // Volta a imagem
-    //     if (UIFade.Instance != null)
-    //         yield return StartCoroutine(UIFade.Instance.FadeIn());
+        playerControls.Disable();
 
-    //     playerControls.Enable();
-    //     isDead = false;
-    // }
+        myAnimator.SetTrigger("death");
 
-private IEnumerator DieRoutine()
-{
-    isDead = true;
+        yield return new WaitForSeconds(deathDuration);
 
-    // trava player
-    movement = Vector2.zero;
-    rb.linearVelocity = Vector2.zero;
+        if (UIFade.Instance != null)
+            yield return StartCoroutine(UIFade.Instance.FadeOut());
 
-    playerControls.Disable();
+        Respawn();
 
-    // animação morte
-    myAnimator.SetTrigger("death");
+        if (UIFade.Instance != null)
+            yield return StartCoroutine(UIFade.Instance.FadeIn());
 
-    // espera morte
-    yield return new WaitForSeconds(deathDuration);
+        myAnimator.SetTrigger("revive");
 
-    // fade preto
-    if (UIFade.Instance != null)
-        yield return StartCoroutine(UIFade.Instance.FadeOut());
+        yield return new WaitForSeconds(reviveDuration);
 
-    yield return new WaitForSeconds(0.2f);
+        playerControls.Enable();
 
-    // respawn
-    Respawn();
-
-    // volta imagem PRIMEIRO
-    if (UIFade.Instance != null)
-        yield return StartCoroutine(UIFade.Instance.FadeIn());
-
-    // AGORA toca revive
-    myAnimator.SetTrigger("revive");
-
-    // espera revive terminar
-    yield return new WaitForSeconds(reviveDuration);
-
-    playerControls.Enable();
-
-    isDead = false;
-}
+        isDead = false;
+    }
 
     // =========================
     // RESPAWN
     // =========================
 
-    // private void Respawn()
-    // {
-    //     transform.position = checkpointPosition;
-
-    //     altura = 0f;
-    //     velocidadeY = 0f;
-    //     estaNoChao = true;
-    //     estaSobrePoca = false;
-    //     movement = Vector2.zero;
-    //     rb.linearVelocity = Vector2.zero;
-
-    //     ReativarColisoesJumpable();
-    // }
-
     private void Respawn()
-{
-    transform.position = checkpointPosition;
+    {
+        transform.position = checkpointPosition;
 
-    altura = 0f;
-    velocidadeY = 0f;
+        altura        = 0f;
+        velocidadeY   = 0f;
+        estaNoChao    = true;
+        estaSobrePoca = false;
+        movement      = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
 
-    estaNoChao = true;
-    estaSobrePoca = false;
-
-    movement = Vector2.zero;
-
-    rb.linearVelocity = Vector2.zero;
-
-    ReativarColisoesJumpable();
-}
+        ReativarColisoesJumpable();
+    }
 }
