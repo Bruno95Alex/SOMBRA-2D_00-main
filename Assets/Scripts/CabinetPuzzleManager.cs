@@ -1,99 +1,105 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-/// <summary>
-/// Gerencia o puzzle dos três armários.
-/// Coloque num GameObject vazio chamado "CabinetPuzzle".
-///
-/// ORDEM CORRETA: índice 0 = relâmpago, 1 = meio, 2 = escondido
-/// </summary>
 public class CabinetPuzzleManager : MonoBehaviour
 {
     public static CabinetPuzzleManager Instance;
 
     [Header("Armários na ordem correta")]
-    [SerializeField] private PuzzleCabinet[] correctOrder; // arraste: [0]=relâmpago [1]=meio [2]=escondido
+    [SerializeField] private PuzzleCabinet[] correctOrder;
 
     [Header("Porta que destrava")]
     [SerializeField] private DoorLocked targetDoor;
 
     [Header("Sons")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip   correctSequenceClip; // clique metálico final
-    [SerializeField] private AudioClip   wrongOrderClip;      // som de erro / reset
+    [SerializeField] private AudioClip   correctSequenceClip;
+    [SerializeField] private AudioClip   wrongOrderClip;
 
-    private int currentStep = 0;
-    private bool solved = false;
+    private int  currentStep = 0;
+    private bool solved      = false;
+    private bool resetting   = false;
 
-    void Awake()
-    {
-        Instance = this;
-    }
+    // todos os armários abertos até agora
+    private List<PuzzleCabinet> abertos = new List<PuzzleCabinet>();
+
+    void Awake() { Instance = this; }
 
     // =========================
-    // CHAMADO PELO PuzzleCabinet
+    // CHAMADO APÓS Open() no PuzzleCabinet
     // =========================
 
     public void OnCabinetOpened(PuzzleCabinet cabinet)
     {
-        if (solved) return;
+        Debug.Log($"[Manager] OnCabinetOpened: {cabinet.gameObject.name} | step={currentStep}/{correctOrder.Length} | solved={solved} | resetting={resetting}");
 
-        if (cabinet == correctOrder[currentStep])
+        if (solved || resetting) return;
+
+        if (!abertos.Contains(cabinet))
+            abertos.Add(cabinet);
+
+        bool correto = cabinet == correctOrder[currentStep];
+        Debug.Log($"[Manager] Correto={correto} | esperado={correctOrder[currentStep].gameObject.name}");
+
+        if (correto)
         {
-            // passo certo
             currentStep++;
-
             if (currentStep >= correctOrder.Length)
                 PuzzleSolved();
         }
         else
         {
-            // erro — reseta tudo
             StartCoroutine(ResetPuzzle());
         }
     }
 
     // =========================
-    // PUZZLE RESOLVIDO
+    // RESOLVIDO
     // =========================
 
     void PuzzleSolved()
     {
         solved = true;
+        abertos.Clear();
 
         if (audioSource != null && correctSequenceClip != null)
             audioSource.PlayOneShot(correctSequenceClip);
 
         UIMessage.Instance.Show("*clique metálico* A porta foi destrancada.", 3f);
 
-        // destranca a porta diretamente sem precisar de itens
         if (targetDoor != null)
             targetDoor.UnlockByPuzzle();
-
-        Debug.Log("Puzzle resolvido!");
     }
 
     // =========================
     // RESET
     // =========================
 
-    System.Collections.IEnumerator ResetPuzzle()
+    IEnumerator ResetPuzzle()
     {
+        resetting = true;
+
         if (audioSource != null && wrongOrderClip != null)
             audioSource.PlayOneShot(wrongOrderClip);
 
         UIMessage.Instance.Show("Os armários se fecham novamente...", 2f);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
 
-        foreach (var cabinet in correctOrder)
-            cabinet.ForceClose();
+        foreach (var cabinet in abertos)
+            if (cabinet != null)
+                cabinet.ForceClose();
 
+        abertos.Clear();
         currentStep = 0;
+
+        // aguarda animações de fechar
+        yield return new WaitForSeconds(1.0f);
+
+        resetting = false;
     }
 
-    // =========================
-    // UTILITÁRIO
-    // =========================
-
-    public bool IsSolved() => solved;
+    public bool IsSolved()    => solved;
+    public bool IsResetting() => resetting;
 }

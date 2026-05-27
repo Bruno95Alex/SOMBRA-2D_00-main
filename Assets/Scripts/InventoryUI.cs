@@ -281,21 +281,40 @@ public class InventoryUI : MonoBehaviour
     {
         if (selectedItem == null) return;
 
-        // salva referência antes de fechar (CloseAll zeraria selectedItem)
         ItemData item = selectedItem;
-
-        CloseAll();
 
         if (item.isDiaryPage)
         {
+            // diário: fecha inventário e abre página
+            CloseAll();
             if (DiaryUI.Instance != null)
                 DiaryUI.Instance.ShowPage(item.description);
         }
         else
         {
+            // item normal: só esconde os painéis visualmente mas mantém estado
+            // ItemDescriptionUI fecha sozinho depois sem conflito
+            EsconderPaineis();
             if (ItemDescriptionUI.Instance != null)
                 ItemDescriptionUI.Instance.Show(item);
         }
+    }
+
+    // =========================
+    // ESCONDER PAINÉIS SEM RESETAR ESTADO
+    // usado quando abre ItemDescriptionUI — mantém inventário pronto para voltar
+    // =========================
+
+    void EsconderPaineis()
+    {
+        RestaurarSlot(slotAtual);
+        FecharOpcoes();
+        if (inventoryPanel != null) inventoryPanel.SetActive(false);
+        if (optionsPanel   != null) optionsPanel.SetActive(false);
+        selectedItem         = null;
+        aberto               = false;
+        navegandoComControle = false;
+        Time.timeScale       = 1f;
     }
 
     // =========================

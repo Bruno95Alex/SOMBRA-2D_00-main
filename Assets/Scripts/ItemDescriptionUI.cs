@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using System.Collections;
 
 public class ItemDescriptionUI : MonoBehaviour
 {
@@ -9,25 +11,31 @@ public class ItemDescriptionUI : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemText;
+    [SerializeField] private Button closeButton;
+
+    private bool visivel   = false;
+    private bool bloqueado = false; // evita fechar no mesmo frame que abriu
 
     void Awake()
     {
         Instance = this;
-
-        // começa invisível sem quebrar o jogo
         HideImmediate();
     }
 
-    // ================================
-    // MOSTRAR DESCRIÇÃO
-    // ================================
+    void Update()
+    {
+        if (!visivel || bloqueado) return;
+
+        bool fechar = (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
+                   || (InputReader.Instance != null && InputReader.Instance.InventoryPressed)
+                   || (InputReader.Instance != null && InputReader.Instance.InteractPressed);
+
+        if (fechar) Hide();
+    }
+
     public void Show(ItemData item)
     {
-        if (item == null)
-        {
-            Debug.LogError("Item nulo na descrição");
-            return;
-        }
+        if (item == null) { Debug.LogError("Item nulo na descrição"); return; }
 
         if (canvasGroup == null || itemImage == null || itemText == null)
         {
@@ -35,42 +43,42 @@ public class ItemDescriptionUI : MonoBehaviour
             return;
         }
 
-        canvasGroup.alpha = 1;
-        canvasGroup.interactable = true;
+        canvasGroup.alpha          = 1;
+        canvasGroup.interactable   = true;
         canvasGroup.blocksRaycasts = true;
 
         itemImage.sprite = item.icon;
-        itemText.text = item.description;
+        itemText.text    = item.description;
+        visivel          = true;
+
+        if (closeButton != null)
+            closeButton.image.color = new Color(1f, 0.85f, 0.2f, 1f);
+
+        StartCoroutine(BloquearPorUmFrame());
     }
 
-    // ================================
-    // FECHAR (BOTÃO)
-    // ================================
+    IEnumerator BloquearPorUmFrame()
+    {
+        bloqueado = true;
+        yield return null;
+        yield return null;
+        bloqueado = false;
+    }
+
     public void Hide()
     {
         HideImmediate();
-
-        // 🔥 IMPORTANTE: garante que o jogo volta ao normal
-        if (InventoryUI.Instance != null)
-        {
-            InventoryUI.Instance.CloseAll();
-        }
-        else
-        {
-            // fallback caso InventoryUI não exista
-            Time.timeScale = 1f;
-        }
+        visivel = false;
     }
 
-    // ================================
-    // ESCONDER SEM LÓGICA EXTRA
-    // ================================
     private void HideImmediate()
     {
         if (canvasGroup == null) return;
-
-        canvasGroup.alpha = 0;
-        canvasGroup.interactable = false;
+        canvasGroup.alpha          = 0;
+        canvasGroup.interactable   = false;
         canvasGroup.blocksRaycasts = false;
+
+        if (closeButton != null)
+            closeButton.image.color = Color.white;
     }
 }

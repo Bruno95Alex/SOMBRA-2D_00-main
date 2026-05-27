@@ -1,13 +1,6 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using System.Collections;
 
-/// <summary>
-/// Coloque em cada armário do puzzle.
-/// Tipos:
-///   Lightning → só abre durante um relâmpago
-///   Normal    → abre normalmente com F
-/// </summary>
 public class PuzzleCabinet : MonoBehaviour
 {
     public enum CabinetType { Lightning, Normal }
@@ -16,17 +9,28 @@ public class PuzzleCabinet : MonoBehaviour
     [SerializeField] private CabinetType type = CabinetType.Normal;
 
     [Header("Animação")]
-    [SerializeField] private Animator animator;         // trigger "Open" e "Close"
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip openClip;        // clique metálico ao abrir
-    [SerializeField] private AudioClip closeClip;       // som de fechar
+    [SerializeField] private Animator animator;
 
-    [Header("Dica extra (só no tipo Lightning)")]
+    [Header("Sons")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip openClip;
+    [SerializeField] private AudioClip closeClip;
+    [SerializeField] private AudioClip wrongClip;
+
+    [Header("Dicas")]
     [SerializeField] private string hintNormal    = "Pressione F para abrir";
-    [SerializeField] private string hintLightning = "Algo neste armário só aparece com a luz certa...";
+    [SerializeField] private string hintLightning = "Algo neste armário só responde à luz certa...";
+
+    public bool IsOpen => isOpen;
 
     private bool playerNear = false;
     private bool isOpen     = false;
+
+    void Awake()
+    {
+        if (animator == null)
+            animator = GetComponent<Animator>();
+    }
 
     // =========================
     // UPDATE
@@ -35,21 +39,28 @@ public class PuzzleCabinet : MonoBehaviour
     void Update()
     {
         if (!playerNear || isOpen) return;
+        if (CabinetPuzzleManager.Instance != null && CabinetPuzzleManager.Instance.IsResetting()) return;
 
-        if (Keyboard.current.fKey.wasPressedThisFrame)
+        bool interact = InputReader.Instance != null
+            ? InputReader.Instance.InteractPressed
+            : UnityEngine.InputSystem.Keyboard.current.fKey.wasPressedThisFrame;
+
+        if (interact)
+        {
+            Debug.Log($"[Cabinet] Tentando abrir: {gameObject.name} | isOpen={isOpen} | playerNear={playerNear}");
             TryOpen();
+        }
     }
 
     // =========================
-    // TENTATIVA DE ABRIR
+    // ABRIR
     // =========================
 
     void TryOpen()
     {
         if (type == CabinetType.Lightning)
         {
-            // só abre se estiver relampejando agora
-            if (!LightningSystem.Instance.IsLightningActive())
+            if (LightningSystem.Instance == null || !LightningSystem.Instance.IsLightningActive())
             {
                 UIMessage.Instance.Show(hintLightning, 2f);
                 return;
@@ -59,62 +70,79 @@ public class PuzzleCabinet : MonoBehaviour
         Open();
     }
 
-    // =========================
-    // ABRIR
-    // =========================
-
-    void Open()
+    public void Open()
     {
         isOpen = true;
 
-        if (animator != null)
-            animator.SetTrigger("Open");
+        PlayAnim("Open");
 
         if (audioSource != null && openClip != null)
             audioSource.PlayOneShot(openClip);
 
         UIMessage.Instance.Hide();
 
-        // avisa o manager
+        // avisa o manager no próximo frame — garante que isOpen já está true
+        StartCoroutine(NotificarManager());
+    }
+
+    IEnumerator NotificarManager()
+    {
+        yield return null;
+        Debug.Log($"[Cabinet] Notificando manager: {gameObject.name} | isOpen={isOpen} | resetting={CabinetPuzzleManager.Instance.IsResetting()}");
         CabinetPuzzleManager.Instance.OnCabinetOpened(this);
     }
 
     // =========================
-    // FECHAR (chamado pelo manager no erro)
+    // FECHAR
     // =========================
 
     public void ForceClose()
     {
-        if (!isOpen) return;
+        if (CabinetPuzzleManager.Instance != null && CabinetPuzzleManager.Instance.IsSolved())
+            return;
+
+        StopAllCoroutines();
+        StartCoroutine(CloseRoutine());
+    }
+
+    IEnumerator CloseRoutine()
+    {
+        PlayAnim("Close");
+
+        if (audioSource != null)
+            audioSource.PlayOneShot(wrongClip != null ? wrongClip : closeClip);
+
+        yield return new WaitForSeconds(0.8f);
 
         isOpen = false;
 
         if (animator != null)
-            animator.SetTrigger("Close");
+            animator.ResetTrigger("Close");
+    }
 
-        if (audioSource != null && closeClip != null)
-            audioSource.PlayOneShot(closeClip);
+    void PlayAnim(string trigger)
+    {
+        if (animator == null) return;
+        animator.ResetTrigger("Open");
+        animator.ResetTrigger("Close");
+        animator.SetTrigger(trigger);
     }
 
     // =========================
-    // TRIGGER PLAYER
+    // TRIGGERS PLAYER
     // =========================
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player") || isOpen) return;
-
         playerNear = true;
         UIMessage.Instance.Show(
-            type == CabinetType.Lightning ? hintLightning : hintNormal,
-            999f
-        );
+            type == CabinetType.Lightning ? hintLightning : hintNormal, 999f);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-
         playerNear = false;
         UIMessage.Instance.Hide();
     }
