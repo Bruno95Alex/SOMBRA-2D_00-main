@@ -1,40 +1,37 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 using System.Collections;
 
-/// <summary>
-/// Mecânica do gerador em 3 fases:
-///   Fase 1 — sem itens: mostra o que falta
-///   Fase 2 — itens instalados: pede para ligar
-///   Fase 3 — ligado: executa animação e aciona vitória
-/// </summary>
 public class Generator : MonoBehaviour
 {
-    // ================================
-    // INSPECTOR
-    // ================================
-
     [Header("Itens necessários")]
     [SerializeField] private ItemData keyItem;
     [SerializeField] private ItemData batteryItem;
 
     [Header("Animação")]
-    [SerializeField] private Animator animator; // trigger "TurnOn"
+    [SerializeField] private Animator animator;
 
     [Header("Luzes")]
-    [SerializeField] private GameObject lightOff; // visual apagado
-    [SerializeField] private GameObject lightOn;  // visual ligado
+    [SerializeField] private GameObject lightOff;
+    [SerializeField] private GameObject lightOn;
+
+    [Header("Iluminação Global")]
+    [SerializeField] private Light2D globalLight;
+    [SerializeField] private float lightIntensidadeNoite  = 0.04f; // valor atual da noite
+    [SerializeField] private float lightIntensidadeDia    = 1.0f;  // valor com luzes acesas
+    [SerializeField] private float lightTransicaoSpeed    = 0.8f;  // velocidade da transição
 
     [Header("Sons")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip   installClip;  // som de instalar item
-    [SerializeField] private AudioClip   startupClip;  // som de ligar o gerador
+    [SerializeField] private AudioClip   installClip;
+    [SerializeField] private AudioClip   startupClip;
 
     [Header("Partículas (opcional)")]
     [SerializeField] private ParticleSystem sparks;
 
     [Header("Vitória")]
-    [SerializeField] private float delayVitoria = 2f; // tempo após ligar para acionar vitória
+    [SerializeField] private float delayVitoria = 2f;
 
     // ================================
     // ESTADO
@@ -43,18 +40,13 @@ public class Generator : MonoBehaviour
     private enum GeneratorState { Broken, Ready, On }
     private GeneratorState state = GeneratorState.Broken;
 
-    private bool keyInstalled      = false;
-    private bool batteryInstalled  = false;
-    private bool playerNear        = false;
-
-    // ================================
-    // AWAKE
-    // ================================
+    private bool keyInstalled     = false;
+    private bool batteryInstalled = false;
+    private bool playerNear       = false;
 
     void Awake()
     {
         if (animator == null) animator = GetComponent<Animator>();
-
         if (lightOn  != null) lightOn.SetActive(false);
         if (lightOff != null) lightOff.SetActive(true);
     }
@@ -88,47 +80,53 @@ public class Generator : MonoBehaviour
     {
         bool temChave   = InventorySystem.Instance.HasItem(keyItem);
         bool temBateria = InventorySystem.Instance.HasItem(batteryItem);
-
         bool instalouAlgo = false;
 
-        // instala chave se tiver e ainda não instalou
         if (!keyInstalled && temChave)
         {
             keyInstalled = true;
             InventorySystem.Instance.RemoveItem(keyItem);
-            UIMessage.Instance.Show("Chave do gerador instalada!", 2f);
             PlaySound(installClip);
             instalouAlgo = true;
+
+            if (!batteryInstalled)
+                UIMessage.Instance.Show("✓ Chave instalada! Agora coloque a bateria.", 3f);
         }
 
-        // instala bateria se tiver e ainda não instalou
         if (!batteryInstalled && temBateria)
         {
             batteryInstalled = true;
             InventorySystem.Instance.RemoveItem(batteryItem);
-            UIMessage.Instance.Show("Bateria instalada!", 2f);
             PlaySound(installClip);
             instalouAlgo = true;
+
+            if (!keyInstalled)
+                UIMessage.Instance.Show("✓ Bateria instalada! Agora encontre a chave.", 3f);
         }
 
-        // verifica se ambos foram instalados
         if (keyInstalled && batteryInstalled)
         {
             state = GeneratorState.Ready;
-            UIMessage.Instance.Show("Gerador pronto! Pressione F para ligar.", 3f);
+            StartCoroutine(MensagemPronto());
             return;
         }
 
-        // mostra o que ainda falta
         if (!instalouAlgo)
         {
             if (!keyInstalled && !batteryInstalled)
-                UIMessage.Instance.Show("Você precisa da chave e da bateria.", 2f);
+                UIMessage.Instance.Show("O gerador precisa de 2 peças:\n[ ] Chave do gerador\n[ ] Bateria", 3f);
             else if (!keyInstalled)
-                UIMessage.Instance.Show("Ainda falta a chave do gerador.", 2f);
+                UIMessage.Instance.Show("Falta ainda:\n[ ] Chave do gerador\n✓  Bateria instalada", 3f);
             else
-                UIMessage.Instance.Show("Ainda falta a bateria.", 2f);
+                UIMessage.Instance.Show("Falta ainda:\n✓  Chave instalada\n[ ] Bateria", 3f);
         }
+    }
+
+    IEnumerator MensagemPronto()
+    {
+        UIMessage.Instance.Show("✓ Chave instalada!\n✓ Bateria instalada!", 2f);
+        yield return new WaitForSeconds(2f);
+        UIMessage.Instance.Show("Gerador pronto! Pressione F para ligar.", 999f);
     }
 
     // ================================
@@ -139,14 +137,10 @@ public class Generator : MonoBehaviour
     {
         state = GeneratorState.On;
 
-        if (animator != null)
-            animator.SetTrigger("TurnOn");
-
-        if (sparks != null)
-            sparks.Play();
+        if (animator != null) animator.SetTrigger("TurnOn");
+        if (sparks   != null) sparks.Play();
 
         PlaySound(startupClip);
-
         UIMessage.Instance.Hide();
 
         StartCoroutine(RotinaDeLigar());
@@ -154,20 +148,50 @@ public class Generator : MonoBehaviour
 
     IEnumerator RotinaDeLigar()
     {
-        // pequeno delay para o som e animação começarem
-        yield return new WaitForSeconds(0.5f);
+        UIMessage.Instance.Show("Ligando o gerador...", 1.5f);
 
-        // troca visual apagado → ligado
+        yield return new WaitForSeconds(0.8f);
+
         if (lightOff != null) lightOff.SetActive(false);
         if (lightOn  != null) lightOn.SetActive(true);
 
-        UIMessage.Instance.Show("⚡ Energia restaurada! Corra para a saída!", 3f);
+        // iluminação acende gradualmente — simula luzes ligando
+        yield return StartCoroutine(AcenderLuzes());
+
+        UIMessage.Instance.Show("⚡ Energia restaurada! Corra para a saída!", 4f);
 
         yield return new WaitForSeconds(delayVitoria);
 
-        // TODO: acionar condição de vitória
-        // VictoryManager.Instance.Win();
+        // TODO: VictoryManager.Instance.Win();
         Debug.Log("GERADOR LIGADO — acionar vitória aqui");
+    }
+
+    IEnumerator AcenderLuzes()
+    {
+        if (globalLight == null) yield break;
+
+        float intensidadeAtual = globalLight.intensity;
+        float t = 0f;
+
+        // pisca 2x antes de acender completamente — simula luzes ligando
+        globalLight.intensity = lightIntensidadeDia * 0.3f;
+        yield return new WaitForSeconds(0.1f);
+        globalLight.intensity = intensidadeAtual;
+        yield return new WaitForSeconds(0.1f);
+        globalLight.intensity = lightIntensidadeDia * 0.5f;
+        yield return new WaitForSeconds(0.15f);
+        globalLight.intensity = intensidadeAtual;
+        yield return new WaitForSeconds(0.15f);
+
+        // acende suavemente até o valor final
+        while (t < 1f)
+        {
+            t += Time.deltaTime * lightTransicaoSpeed;
+            globalLight.intensity = Mathf.Lerp(intensidadeAtual, lightIntensidadeDia, t);
+            yield return null;
+        }
+
+        globalLight.intensity = lightIntensidadeDia;
     }
 
     // ================================
@@ -177,9 +201,8 @@ public class Generator : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player") || state == GeneratorState.On) return;
-
         playerNear = true;
-        AtualizarMensagemProximidade();
+        MostrarMensagemProximidade();
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -189,28 +212,24 @@ public class Generator : MonoBehaviour
         UIMessage.Instance.Hide();
     }
 
-    void AtualizarMensagemProximidade()
+    void MostrarMensagemProximidade()
     {
         switch (state)
         {
             case GeneratorState.Broken:
                 if (!keyInstalled && !batteryInstalled)
-                    UIMessage.Instance.Show("Gerador quebrado. Precisa de itens.", 999f);
+                    UIMessage.Instance.Show("Gerador sem energia.\nPressione F para inspecionar.", 999f);
                 else if (!keyInstalled)
-                    UIMessage.Instance.Show("Gerador incompleto. Falta a chave.", 999f);
+                    UIMessage.Instance.Show("✓ Bateria instalada.\n[ ] Falta a chave — Pressione F.", 999f);
                 else
-                    UIMessage.Instance.Show("Gerador incompleto. Falta a bateria.", 999f);
+                    UIMessage.Instance.Show("✓ Chave instalada.\n[ ] Falta a bateria — Pressione F.", 999f);
                 break;
 
             case GeneratorState.Ready:
-                UIMessage.Instance.Show("Pressione F para ligar o gerador!", 999f);
+                UIMessage.Instance.Show("✓ Tudo pronto!\nPressione F para ligar o gerador.", 999f);
                 break;
         }
     }
-
-    // ================================
-    // UTILITÁRIOS
-    // ================================
 
     void PlaySound(AudioClip clip)
     {
@@ -218,5 +237,6 @@ public class Generator : MonoBehaviour
             audioSource.PlayOneShot(clip);
     }
 
-    public bool IsOn => state == GeneratorState.On;
+    public bool  IsOn              => state == GeneratorState.On;
+    public float LightIntensidadeDia => lightIntensidadeDia;
 }

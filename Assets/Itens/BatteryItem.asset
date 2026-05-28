@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BatteryItem
   m_EditorClassIdentifier: 
   itemName: BateriaGerador
-  icon: {fileID: 0}
+  icon: {fileID: -2307794284884632615, guid: a54d26cb00439ad41ae1bba5661b13e4, type: 3}
   description: 
   isDiaryPage: 0
   isKey: 0
