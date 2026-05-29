@@ -1,0 +1,526 @@
+fileFormatVersion: 2
+guid: 40f9de34fa6ab3346b59b5a2a2e39ba0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5398883691702962396
+    second: DangerSombraa(1)_0
+  - first:
+      213: 2108686511482479068
+    second: DangerSombraa(1)_1
+  - first:
+      213: -8282265027505149657
+    second: DangerSombraa(1)_2
+  - first:
+      213: 7392218890602052742
+    second: DangerSombraa(1)_3
+  - first:
+      213: -9032108325650859914
+    second: DangerSombraa(1)_4
+  - first:
+      213: 747448332674974542
+    second: DangerSombraa(1)_5
+  - first:
+      213: 9151328947576144766
+    second: DangerSombraa(1)_6
+  - first:
+      213: 4691661697489428435
+    second: DangerSombraa(1)_7
+  - first:
+      213: -6174504114053790077
+    second: DangerSombraa(1)_8
+  - first:
+      213: -8711466551638238564
+    second: DangerSombraa(1)_9
+  - first:
+      213: -7782736347697565694
+    second: DangerSombraa(1)_10
+  - first:
+      213: -7863284403909703242
+    second: DangerSombraa(1)_11
+  - first:
+      213: 5826551229542465850
+    second: DangerSombraa(1)_12
+  - first:
+      213: -1652186468923006010
+    second: DangerSombraa(1)_13
+  - first:
+      213: -2664740519453744698
+    second: DangerSombraa(1)_14
+  - first:
+      213: -3312178652011426283
+    second: DangerSombraa(1)_15
+  - first:
+      213: 7476362822465038508
+    second: DangerSombraa(1)_16
+  - first:
+      213: -1065346831541712630
+    second: DangerSombraa(1)_17
+  - first:
+      213: 410830247903142589
+    second: DangerSombraa(1)_18
+  - first:
+      213: 62908673280048447
+    second: DangerSombraa(1)_19
+  - first:
+      213: -6768133767334383492
+    second: DangerSombraa(1)_20
+  - first:
+      213: 5673805850772858832
+    second: DangerSombraa(1)_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DangerSombraa(1)_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 1282
+        width: 281
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd8ca93fc10bcea40800000000000000
+      internalID: 5398883691702962396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_1
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 1290
+        width: 278
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd1229bb53f834d10800000000000000
+      internalID: 2108686511482479068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_2
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 1279
+        width: 262
+        height: 178
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7292aebb6db7f0d80800000000000000
+      internalID: -8282265027505149657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_5
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 909
+        width: 292
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e43cc056c487f5a00800000000000000
+      internalID: 747448332674974542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_6
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 937
+        width: 267
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e738607213d000f70800000000000000
+      internalID: 9151328947576144766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_8
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 921
+        width: 272
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 386c2a1e831cf4aa0800000000000000
+      internalID: -6174504114053790077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_11
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 583
+        width: 269
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b9c7110f7000e290800000000000000
+      internalID: -7863284403909703242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_13
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 420
+        width: 287
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3232109214219e0800000000000000
+      internalID: -1652186468923006010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_14
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 577
+        width: 268
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c1ae5fad90f40bd0800000000000000
+      internalID: -2664740519453744698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_17
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 206
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a094e5f73b02731f0800000000000000
+      internalID: -1065346831541712630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_18
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 109
+        width: 267
+        height: 274
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db2a04d0fef83b500800000000000000
+      internalID: 410830247903142589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_19
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 206
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3df524ea1f7fd000800000000000000
+      internalID: 62908673280048447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_20
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 103
+        width: 287
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7035bd9232c212a0800000000000000
+      internalID: -6768133767334383492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DangerSombraa(1)_21
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 215
+        width: 285
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d769d33c586dbe40800000000000000
+      internalID: 5673805850772858832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1c7e597ba97fe1247b680a889eb9e3d0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DangerSombraa(1)_0: 5398883691702962396
+      DangerSombraa(1)_1: 2108686511482479068
+      DangerSombraa(1)_10: -7782736347697565694
+      DangerSombraa(1)_11: -7863284403909703242
+      DangerSombraa(1)_12: 5826551229542465850
+      DangerSombraa(1)_13: -1652186468923006010
+      DangerSombraa(1)_14: -2664740519453744698
+      DangerSombraa(1)_15: -3312178652011426283
+      DangerSombraa(1)_16: 7476362822465038508
+      DangerSombraa(1)_17: -1065346831541712630
+      DangerSombraa(1)_18: 410830247903142589
+      DangerSombraa(1)_19: 62908673280048447
+      DangerSombraa(1)_2: -8282265027505149657
+      DangerSombraa(1)_20: -6768133767334383492
+      DangerSombraa(1)_21: 5673805850772858832
+      DangerSombraa(1)_3: 7392218890602052742
+      DangerSombraa(1)_4: -9032108325650859914
+      DangerSombraa(1)_5: 747448332674974542
+      DangerSombraa(1)_6: 9151328947576144766
+      DangerSombraa(1)_7: 4691661697489428435
+      DangerSombraa(1)_8: -6174504114053790077
+      DangerSombraa(1)_9: -8711466551638238564
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
