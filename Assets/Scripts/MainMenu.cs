@@ -70,15 +70,16 @@ public class MainMenu : MonoBehaviour
 
     void Awake()
     {
-        // monta array de botões na ordem do menu
         botoes = new Button[] { btnIniciar, btnContinuar, btnOpcoes, btnSair };
 
-        // verifica se tem save para habilitar Continuar
-        bool temSave = PlayerPrefs.HasKey("SaveExists");
+        // habilita Continuar só se tiver save
+        bool temSave = SaveSystem.Instance != null
+            ? SaveSystem.Instance.TemQualquerSave()
+            : PlayerPrefs.HasKey("SaveExists_0");
+
         if (btnContinuar != null)
             btnContinuar.interactable = temSave;
 
-        // fecha painel de opções
         if (painelOpcoes != null)
             painelOpcoes.SetActive(false);
     }
@@ -256,7 +257,17 @@ public class MainMenu : MonoBehaviour
 
     public void BtnContinuar()
     {
-        // carrega a cena salva ou a mesma do iniciar
+        if (SaveSystem.Instance != null)
+        {
+            int slot = SaveSystem.Instance.PrimeiroSlotComSave();
+            if (slot >= 0)
+            {
+                SaveSystem.Instance.Carregar(slot);
+                return;
+            }
+        }
+
+        // fallback — carrega cena salva manualmente
         string cenaSalva = PlayerPrefs.GetString("SaveScene", cenaJogo);
         StartCoroutine(CarregarCena(cenaSalva));
     }

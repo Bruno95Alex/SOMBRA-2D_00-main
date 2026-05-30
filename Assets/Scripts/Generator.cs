@@ -237,6 +237,8 @@ public class Generator : MonoBehaviour
             audioSource.PlayOneShot(clip);
     }
 
-    public bool  IsOn              => state == GeneratorState.On;
+    public bool  IsOn                => state == GeneratorState.On;
     public float LightIntensidadeDia => lightIntensidadeDia;
+    public bool  ChaveInstalada      => keyInstalled;
+    public bool  BateriaInstalada    => batteryInstalled;
 }

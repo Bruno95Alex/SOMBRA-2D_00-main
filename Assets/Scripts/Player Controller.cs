@@ -251,29 +251,18 @@ public class PlayerController : Singleton<PlayerController>
 
     private IEnumerator DieRoutine()
     {
-        // Captura a direção ANTES de qualquer alteração no movimento
+        isDead = true;
+
         if (movement != Vector2.zero)
             lastDirection = movement.normalized;
 
-        isDead = true;
+        myAnimator.SetFloat("lastMoveX", lastDirection.x);
+        myAnimator.SetFloat("lastMoveY", lastDirection.y);
 
         movement = Vector2.zero;
         rb.linearVelocity = Vector2.zero;
 
         playerControls.Disable();
-
-        // Congela o flip do sprite na direção correta antes de acionar a animação
-        if (lastDirection.x > 0.1f)
-            mySpriteRender.flipX = false;
-        else if (lastDirection.x < -0.1f)
-            mySpriteRender.flipX = true;
-
-        // Garante que o Animator usa a última direção correta
-        myAnimator.SetFloat("moveX", 0f);
-        myAnimator.SetFloat("moveY", 0f);
-        myAnimator.SetBool("isMoving", false);
-        myAnimator.SetFloat("lastMoveX", lastDirection.x);
-        myAnimator.SetFloat("lastMoveY", lastDirection.y);
 
         myAnimator.SetTrigger("death");
 
@@ -299,6 +288,11 @@ public class PlayerController : Singleton<PlayerController>
     // =========================
     // RESPAWN
     // =========================
+
+    public void SetCheckpoint(Vector3 pos)
+    {
+        checkpointPosition = pos;
+    }
 
     private void Respawn()
     {
