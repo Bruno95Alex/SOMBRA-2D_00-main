@@ -6,6 +6,16 @@ public class ItemPickup : MonoBehaviour
 
     private bool playerNear;
 
+    void Start()
+    {
+        if (SaveSystem.Instance != null &&
+            SaveSystem.Instance.GetDados().coletaveisColetados.Contains(gameObject.name))
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
     void Update()
     {
         bool interact = InputReader.Instance != null
@@ -14,6 +24,9 @@ public class ItemPickup : MonoBehaviour
 
         if (playerNear && interact)
         {
+            if (SaveSystem.Instance != null)
+                SaveSystem.Instance.GetDados().coletaveisColetados.Add(gameObject.name);
+
             InventorySystem.Instance.AddItem(itemData);
             UIMessage.Instance.Hide();
             Destroy(gameObject);

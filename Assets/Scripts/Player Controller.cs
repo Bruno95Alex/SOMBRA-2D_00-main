@@ -73,6 +73,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Update()
     {
         if (isDead) return;
+        if (PauseMenu.Instance != null && PauseMenu.Instance.EstaPausado()) return;
 
         PlayerInput();
         HandleJump();

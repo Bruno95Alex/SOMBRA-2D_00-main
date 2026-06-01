@@ -68,8 +68,11 @@ public class MainMenu : MonoBehaviour
     // AWAKE / START
     // ================================
 
+    public static MainMenu Instance;
+
     void Awake()
     {
+        Instance = this;
         botoes = new Button[] { btnIniciar, btnContinuar, btnOpcoes, btnSair };
 
         // habilita Continuar só se tiver save
@@ -252,24 +255,74 @@ public class MainMenu : MonoBehaviour
 
     public void BtnIniciar()
     {
-        StartCoroutine(CarregarCena(cenaJogo));
+        bool temSave = SaveSystem.Instance != null && SaveSystem.Instance.TemQualquerSave();
+
+        if (temSave)
+        {
+            if (ConfirmDialog.Instance == null)
+            {
+                Debug.LogError("ConfirmDialog não encontrado na cena!");
+                return;
+            }
+
+            ConfirmDialog.Instance.Mostrar(
+                "Iniciar novo jogo?",
+                aoConfirmar: () => AbrirSelecaoSlot(),
+                aoCancelar:  () => { }
+            );
+        }
+        else
+        {
+            AbrirSelecaoSlot();
+        }
+    }
+
+    void AbrirSelecaoSlot()
+    {
+        // esconde todos os botões do menu
+        EsconderBotoes();
+
+        if (SlotSelectUI.Instance == null)
+        {
+            Debug.LogError("[MainMenu] SlotSelectUI não encontrado!");
+            MostrarPainelPrincipal(); // restaura se der erro
+            return;
+        }
+
+        SlotSelectUI.Instance.Abrir(SlotSelectUI.SlotMode.NovoJogo, cenaJogo);
+    }
+
+    void EsconderBotoes()
+    {
+        if (btnIniciar   != null) btnIniciar.gameObject.SetActive(false);
+        if (btnContinuar != null) btnContinuar.gameObject.SetActive(false);
+        if (btnOpcoes    != null) btnOpcoes.gameObject.SetActive(false);
+        if (btnSair      != null) btnSair.gameObject.SetActive(false);
+
+        // esconde também o painel de opções se estiver aberto
+        if (painelOpcoes != null) painelOpcoes.SetActive(false);
+    }
+
+    public void MostrarPainelPrincipal()
+    {
+        if (btnIniciar   != null) btnIniciar.gameObject.SetActive(true);
+        if (btnContinuar != null) btnContinuar.gameObject.SetActive(
+            SaveSystem.Instance != null && SaveSystem.Instance.TemQualquerSave());
+        if (btnOpcoes    != null) btnOpcoes.gameObject.SetActive(true);
+        if (btnSair      != null) btnSair.gameObject.SetActive(true);
     }
 
     public void BtnContinuar()
     {
-        if (SaveSystem.Instance != null)
+        // abre seleção de slots no modo Carregar
+        if (SlotSelectUI.Instance == null)
         {
-            int slot = SaveSystem.Instance.PrimeiroSlotComSave();
-            if (slot >= 0)
-            {
-                SaveSystem.Instance.Carregar(slot);
-                return;
-            }
+            Debug.LogError("SlotSelectUI não encontrado!");
+            return;
         }
 
-        // fallback — carrega cena salva manualmente
-        string cenaSalva = PlayerPrefs.GetString("SaveScene", cenaJogo);
-        StartCoroutine(CarregarCena(cenaSalva));
+        EsconderBotoes();
+        SlotSelectUI.Instance.Abrir(SlotSelectUI.SlotMode.Carregar, cenaJogo);
     }
 
     public void BtnOpcoes()

@@ -7,10 +7,12 @@ public class CameraController : Singleton<CameraController>
 {
     private CinemachineCamera[] cams;
 
+    [Header("Cenas sem câmera Cinemachine (ex: menu)")]
+    [SerializeField] private string[] cenasIgnoradas = { "Menu" };
+
     protected override void Awake()
     {
         base.Awake();
-
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -21,16 +23,18 @@ public class CameraController : Singleton<CameraController>
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // ignora cenas de menu ou sem Cinemachine
+        foreach (var cena in cenasIgnoradas)
+            if (scene.name == cena) return;
+
         StartCoroutine(SetPlayerCameraFollow());
     }
 
     private IEnumerator SetPlayerCameraFollow()
     {
-        // espera a cena estabilizar
         yield return null;
         yield return null;
 
-        // 🚫 evita conflito durante teleporte
         if (GameState.IsTeleporting)
             yield break;
 
@@ -38,7 +42,7 @@ public class CameraController : Singleton<CameraController>
 
         if (player == null)
         {
-            Debug.LogError("❌ Player não encontrado para câmera");
+            Debug.LogWarning("CameraController: Player não encontrado na cena — ignorando.");
             yield break;
         }
 
@@ -49,7 +53,7 @@ public class CameraController : Singleton<CameraController>
 
         if (cams == null || cams.Length == 0)
         {
-            Debug.LogError("❌ Nenhuma CinemachineCamera encontrada");
+            Debug.LogWarning("CameraController: Nenhuma CinemachineCamera na cena — ignorando.");
             yield break;
         }
 
@@ -57,10 +61,8 @@ public class CameraController : Singleton<CameraController>
         {
             if (cam == null) continue;
 
-            // 🔥 PARA FOLLOW TEMPORARIAMENTE
             cam.Follow = null;
 
-            // 🔥 REMOVE SUAVIZAÇÃO (compatível com qualquer versão)
             var behaviours = cam.GetComponentsInChildren<MonoBehaviour>();
 
             foreach (var b in behaviours)
@@ -79,10 +81,7 @@ public class CameraController : Singleton<CameraController>
                 }
             }
 
-            // 🔥 TELEPORTA CÂMERA INSTANTANEAMENTE
             cam.ForceCameraPosition(player.transform.position, Quaternion.identity);
-
-            // 🔥 VOLTA A SEGUIR O PLAYER
             cam.Follow = player.transform;
         }
     }

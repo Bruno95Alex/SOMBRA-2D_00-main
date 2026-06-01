@@ -31,9 +31,14 @@ public class SaveData
 
     // ================================
     // ITENS COLETÁVEIS JÁ PEGOS
-    // (para não reaparecerem na cena)
+    // guarda o nome do GameObject para não reaparecer
     // ================================
     public List<string> coletaveisColetados = new List<string>();
+
+    // ================================
+    // PÁGINAS DO DIÁRIO JÁ LIDAS
+    // ================================
+    public List<string> paginasLidas = new List<string>();
 
     // ================================
     // PORTAS ABERTAS

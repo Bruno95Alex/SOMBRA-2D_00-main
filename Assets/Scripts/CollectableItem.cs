@@ -6,6 +6,17 @@ public class CollectableItem : MonoBehaviour
 
     private bool playerPerto = false;
 
+    void Start()
+    {
+        // verifica se este item já foi coletado no save atual
+        if (SaveSystem.Instance != null &&
+            SaveSystem.Instance.GetDados().coletaveisColetados.Contains(gameObject.name))
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
     void Update()
     {
         bool interact = InputReader.Instance != null
@@ -18,6 +29,10 @@ public class CollectableItem : MonoBehaviour
 
     void Coletar()
     {
+        // registra no save que este item foi coletado
+        if (SaveSystem.Instance != null)
+            SaveSystem.Instance.GetDados().coletaveisColetados.Add(gameObject.name);
+
         InventorySystem.Instance.AddItem(itemData);
         PickupUI.Instance.HideText();
         Destroy(gameObject);

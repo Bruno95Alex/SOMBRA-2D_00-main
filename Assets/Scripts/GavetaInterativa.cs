@@ -19,7 +19,11 @@ public class GavetaInterativa : MonoBehaviour
     {
         if (!playerNear || opened) return;
 
-        if (Keyboard.current.fKey.wasPressedThisFrame)
+        bool interact = InputReader.Instance != null
+            ? InputReader.Instance.InteractPressed
+            : Keyboard.current.fKey.wasPressedThisFrame;
+
+        if (interact)
         {
             opened = true;
 
@@ -27,7 +31,6 @@ public class GavetaInterativa : MonoBehaviour
 
             animator.SetTrigger("Open");
 
-            // 🔥 delay pra combinar com animação
             Invoke(nameof(MostrarItem), 0.5f);
         }
     }
@@ -45,7 +48,7 @@ public class GavetaInterativa : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerNear = true;
-            UIMessage.Instance.Show("Pressione F para abrir gaveta", 999f);
+            UIMessage.Instance.Show("Pressione F / botão para abrir gaveta", 999f);
         }
     }
 

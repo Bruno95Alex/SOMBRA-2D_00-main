@@ -103,6 +103,16 @@ public class InventorySystem : MonoBehaviour
 
     public bool SlotHasItem(int index) => index >= 0 && index < itens.Count;
 
+    /// <summary>Retorna todos os itens para o SaveSystem.</summary>
+    public List<ItemData> GetAllItems() => new List<ItemData>(itens);
+
+    /// <summary>Limpa inventário sem destruir — usado pelo SaveSystem antes de restaurar.</summary>
+    public void ClearInventory()
+    {
+        itens.Clear();
+        UpdateUI();
+    }
+
     public Color GetSlotOriginalColor(int index)
     {
         // slots vazios têm alpha 0, slots com item têm alpha 1

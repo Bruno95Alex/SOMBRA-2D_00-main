@@ -6,11 +6,20 @@ public class DiaryPage : MonoBehaviour
 
     private bool playerNear;
 
+    void Start()
+    {
+        if (SaveSystem.Instance != null &&
+            SaveSystem.Instance.GetDados().coletaveisColetados.Contains(gameObject.name))
+        {
+            Destroy(gameObject);
+            return;
+        }
+    }
+
     void Update()
     {
         if (!playerNear) return;
 
-        // teclado F OU Triângulo via InputReader
         bool interact = InputReader.Instance != null
             ? InputReader.Instance.InteractPressed
             : UnityEngine.InputSystem.Keyboard.current.fKey.wasPressedThisFrame;
@@ -19,12 +28,13 @@ public class DiaryPage : MonoBehaviour
 
         if (itemData == null) { Debug.LogError("DiaryPage sem ItemData!"); return; }
 
+        if (SaveSystem.Instance != null)
+            SaveSystem.Instance.GetDados().coletaveisColetados.Add(gameObject.name);
+
         InventorySystem.Instance.AddItem(itemData);
 
         if (DiaryUI.Instance != null)
             DiaryUI.Instance.ShowPage(itemData.description);
-        else
-            Debug.LogError("DiaryUI não encontrado!");
 
         Destroy(gameObject);
     }
