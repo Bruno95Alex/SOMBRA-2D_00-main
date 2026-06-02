@@ -230,6 +230,12 @@ MonoBehaviour:
   titleCanvas: {fileID: 2000770075}
   titleFloatAmount: 8
   titleFloatSpeed: 1.2
+  botoesPanelRect: {fileID: 1002952894}
+  botoesPanelCanvas: {fileID: 1002952896}
+  botoesFloatAmount: 5
+  botoesFloatSpeed: 1
+  fadeBotoesSpeed: 1.5
+  delayBotoes: 1.2
   btnIniciar: {fileID: 418463731}
   btnContinuar: {fileID: 548440515}
   btnOpcoes: {fileID: 289671099}
@@ -1664,7 +1670,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1821.0001, y: -980.47473}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &548440511
@@ -1849,7 +1855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 279bcba645b4bda4690e6292c69f04ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  painel: {fileID: 1385568624}
+  slotPanel: {fileID: 1385568624}
   titulo: {fileID: 432110703}
   botoesSlot:
   - {fileID: 973069173}
@@ -1862,8 +1868,10 @@ MonoBehaviour:
   btnConfirmar: {fileID: 970635977}
   btnConfirmarText: {fileID: 661584940}
   btnVoltar: {fileID: 855156774}
-  painelConfirmacao: {fileID: 458257719}
-  textoConfirmacao: {fileID: 1893617036}
+  confirmPanel: {fileID: 458257719}
+  confirmText: {fileID: 1893617036}
+  btnSim: {fileID: 1670453925}
+  btnNao: {fileID: 2137589121}
   corSelecionado: {r: 1, g: 0.85, b: 0.2, a: 1}
   corVazio: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   corOcupado: {r: 0.2, g: 0.6, b: 1, a: 1}
@@ -2681,6 +2689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1002952894}
   - component: {fileID: 1002952895}
+  - component: {fileID: 1002952896}
   m_Layer: 5
   m_Name: BotoesPanel
   m_TagString: Untagged
@@ -2737,6 +2746,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!225 &1002952896
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002952893}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1070504540
 GameObject:
   m_ObjectHideFlags: 0
@@ -3146,7 +3167,7 @@ Transform:
   m_GameObject: {fileID: 1131359080}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.47858, y: -0.12889, z: 0}
+  m_LocalPosition: {x: 14, y: 16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
