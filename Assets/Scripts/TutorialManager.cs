@@ -4,29 +4,9 @@ using TMPro;
 using System.Collections;
 
 /// <summary>
-/// Sistema de tutorial por popups — aparece uma dica de cada vez
-/// conforme o jogador realiza as ações ou entra em zonas específicas.
-///
-/// ═══════════════════════════════════════════════════════
-/// HIERARQUIA NA CENA (filho do Canvas principal do jogo):
-///
-///   TutorialPopup  (GameObject vazio — este script aqui)
-///     └── PainelTutorial  (Image com fundo semi-transparente)
-///           ├── IconeTecla   (Image — ícone da tecla/botão)
-///           ├── TituloTexto  (TextMeshProUGUI — ex: "Movimento")
-///           └── DescTexto    (TextMeshProUGUI — ex: "Use WASD...")
-///
-/// ═══════════════════════════════════════════════════════
-/// SETUP:
-///  1. Adicione este script num GameObject na cena Scene1.
-///  2. Conecte os campos no Inspector.
-///  3. Crie TutorialTriggerZone em pontos do mapa e configure
-///     o ID da dica (ver enum TutorialStep abaixo).
-///  4. O tutorial só aparece UMA VEZ por save — depois de visto
-///     fica salvo no PlayerPrefs e não aparece mais.
-///
-/// PARA TESTAR: Menu → Clear Tutorial (chame ResetarTutorial())
-/// ═══════════════════════════════════════════════════════
+/// Sistema de tutorial por popups — versão atualizada com:
+///   • Step de Pulo adicionado
+///   • Step de Poça de Sombra adicionado
 /// </summary>
 public class TutorialManager : MonoBehaviour
 {
@@ -39,80 +19,87 @@ public class TutorialManager : MonoBehaviour
         Lanterna     = 1,
         ColetarItem  = 2,
         Interagir    = 3,
+        Pulo         = 4,
+        PocaDeSombra = 5,
     }
 
     // ── Inspector ──────────────────────────────────────
     [Header("UI — Popup")]
-    [SerializeField] private CanvasGroup painelTutorial;
-    [SerializeField] private Image       iconeTecla;
+    [SerializeField] private CanvasGroup     painelTutorial;
+    [SerializeField] private Image           iconeTecla;
     [SerializeField] private TextMeshProUGUI tituloTexto;
     [SerializeField] private TextMeshProUGUI descTexto;
-    [SerializeField] private TextMeshProUGUI textoFechar;  // "Pressione F para fechar"
+    [SerializeField] private TextMeshProUGUI textoFechar;
 
     [Header("Ícones das teclas (arraste na ordem do enum)")]
-    [SerializeField] private Sprite[] iconesKeyboard;     // ícones para teclado
-    [SerializeField] private Sprite[] iconesGamepad;      // ícones para controle
+    [SerializeField] private Sprite[] iconesKeyboard;   // 6 sprites: Movimento, Lanterna, Coletar, Interagir, Pulo, PocaDeSombra
+    [SerializeField] private Sprite[] iconesGamepad;    // mesma ordem
 
     [Header("Configuração")]
-    [SerializeField] private float duracaoFade  = 0.35f;
-    [SerializeField] private float tempoAutoFecha = 6f;   // fecha sozinho após X segundos
-                                                           // (0 = não fecha sozinho)
+    [SerializeField] private float duracaoFade    = 0.35f;
+    [SerializeField] private float tempoAutoFecha = 6f;
 
     // ── Privados ───────────────────────────────────────
-    private bool   popupAberto  = false;
-    private bool   pausado      = false;
+    private bool      popupAberto = false;
     private Coroutine rotinaAtual;
     private TutorialStep stepAtual;
-
-    // chave base no PlayerPrefs — uma por step
     private const string PREFS_KEY = "Tutorial_Visto_";
 
-    // ── Conteúdo de cada step ─────────────────────────
+    // ── Conteúdo ───────────────────────────────────────
     private static readonly string[] Titulos = {
-        "Movimentação",
+        "Movimento",
         "Lanterna",
         "Coletar Itens",
         "Interagir",
+        "Pulo",
+        "Poça de Sombra",
     };
 
-    // Texto para teclado
     private static readonly string[] DescsTeclado = {
         "Use <b>WASD</b> ou as <b>Setas</b>\npara mover o personagem.",
         "Pressione <b>E</b> para ligar\ne desligar a lanterna.\nAponte com o <b>mouse</b>.",
         "Chegue perto do item\ne pressione <b>F</b> para coletar.",
         "Pressione <b>F</b> para interagir\ncom objetos e personagens.",
+        "Pressione <b>Espaço</b> para pular.\nUse o pulo para passar\npor cima de obstáculos.",
+        "Uma mancha escura vai aparecer\nonde você está!\n<b>Saia de dentro dela</b> antes\nque fique preta — ou você morre.",
     };
 
-    // Texto para controle/joystick
     private static readonly string[] DescsControle = {
         "Use o <b>analógico esquerdo</b>\nou o <b>D-pad</b> para mover.",
         "Pressione <b>□ / X</b> para ligar\ne desligar a lanterna.\nAponte com o <b>analógico direito</b>.",
         "Chegue perto do item\ne pressione <b>△ / Y</b> para coletar.",
         "Pressione <b>△ / Y</b> para interagir\ncom objetos e personagens.",
+        "Pressione <b>✕ / A</b> para pular.\nUse o pulo para passar\npor cima de obstáculos.",
+        "Uma mancha escura vai aparecer\nonde você está!\n<b>Saia de dentro dela</b> antes\nque fique preta — ou você morre.",
     };
 
     // ══════════════════════════════════════════════════
     void Awake()
     {
         Instance = this;
+
         if (painelTutorial != null)
         {
             painelTutorial.alpha          = 0f;
             painelTutorial.interactable   = false;
             painelTutorial.blocksRaycasts = false;
         }
+
+        ValidarSetup();
     }
 
-    void Start()
-{
-    ResetarTutorial(); // remova depois dos testes
-}
+    void ValidarSetup()
+    {
+        if (painelTutorial == null) Debug.LogError("[TutorialManager] PainelTutorial não conectado!");
+        if (tituloTexto    == null) Debug.LogError("[TutorialManager] TituloTexto não conectado!");
+        if (descTexto      == null) Debug.LogError("[TutorialManager] DescTexto não conectado!");
+        if (textoFechar    == null) Debug.LogWarning("[TutorialManager] TextoFechar não conectado.");
+    }
 
     void Update()
     {
         if (!popupAberto) return;
 
-        // Qualquer tecla de interação fecha o popup
         bool fechar = InputReader.Instance != null
             ? (InputReader.Instance.InteractPressed || InputReader.Instance.JumpPressed)
             : UnityEngine.InputSystem.Keyboard.current != null &&
@@ -123,21 +110,19 @@ public class TutorialManager : MonoBehaviour
             FecharPopup();
     }
 
+    void Start()
+{
+    ResetarTutorial(); // remova depois dos testes
+}
+
     // ══════════════════════════════════════════════════
     // API PÚBLICA
     // ══════════════════════════════════════════════════
 
-    /// <summary>
-    /// Tenta mostrar um step do tutorial.
-    /// Se já foi visto antes, ignora silenciosamente.
-    /// </summary>
     public void MostrarStep(TutorialStep step)
     {
-        // já foi visto? ignora
         if (JaFoiVisto(step)) return;
-
-        // popup já aberto? aguarda (pode enfileirar se quiser)
-        if (popupAberto) return;
+        if (popupAberto)      return;
 
         stepAtual = step;
         MarcarComoVisto(step);
@@ -146,9 +131,6 @@ public class TutorialManager : MonoBehaviour
         rotinaAtual = StartCoroutine(RotinaMostrar(step));
     }
 
-    /// <summary>
-    /// Fecha o popup imediatamente (com fade out).
-    /// </summary>
     public void FecharPopup()
     {
         if (!popupAberto) return;
@@ -156,9 +138,6 @@ public class TutorialManager : MonoBehaviour
         rotinaAtual = StartCoroutine(RotinaFechar());
     }
 
-    /// <summary>
-    /// Reseta todos os steps — útil para testes.
-    /// </summary>
     public void ResetarTutorial()
     {
         foreach (TutorialStep s in System.Enum.GetValues(typeof(TutorialStep)))
@@ -167,35 +146,34 @@ public class TutorialManager : MonoBehaviour
         Debug.Log("[TutorialManager] Tutorial resetado.");
     }
 
+    public bool JaViuTodos()
+    {
+        foreach (TutorialStep s in System.Enum.GetValues(typeof(TutorialStep)))
+            if (!JaFoiVisto(s)) return false;
+        return true;
+    }
+
     // ══════════════════════════════════════════════════
-    // ROTINAS INTERNAS
+    // ROTINAS
     // ══════════════════════════════════════════════════
 
     IEnumerator RotinaMostrar(TutorialStep step)
     {
-        popupAberto = true;
-
-        // pausa o jogo enquanto o popup está aberto
+        popupAberto    = true;
         Time.timeScale = 0f;
-        pausado        = true;
 
-        // preenche o conteúdo
         PreencherConteudo(step);
 
-        // fade in
         yield return StartCoroutine(FadePanel(0f, 1f));
 
-        // ativa interação após aparecer
         painelTutorial.interactable   = true;
         painelTutorial.blocksRaycasts = true;
 
-        // fecha automaticamente após X segundos (usa unscaled pois o jogo está pausado)
         if (tempoAutoFecha > 0f)
             yield return new WaitForSecondsRealtime(tempoAutoFecha);
         else
-            yield break; // espera o jogador fechar manualmente via Update()
+            yield break;
 
-        // se chegou aqui é porque o tempo esgotou
         yield return StartCoroutine(RotinaFechar());
     }
 
@@ -208,14 +186,11 @@ public class TutorialManager : MonoBehaviour
 
         popupAberto    = false;
         Time.timeScale = 1f;
-        pausado        = false;
     }
 
     IEnumerator FadePanel(float de, float para)
     {
         if (painelTutorial == null) yield break;
-
-        // usa unscaled pois o jogo pode estar pausado
         float t = 0f;
         while (t < duracaoFade)
         {
@@ -233,21 +208,16 @@ public class TutorialManager : MonoBehaviour
     void PreencherConteudo(TutorialStep step)
     {
         int idx = (int)step;
-
         bool usaControle = InputReader.Instance != null && InputReader.Instance.IsUsingController;
 
-        if (tituloTexto != null)
-            tituloTexto.text = Titulos[idx];
-
-        if (descTexto != null)
-            descTexto.text = usaControle ? DescsControle[idx] : DescsTeclado[idx];
+        if (tituloTexto != null) tituloTexto.text = Titulos[idx];
+        if (descTexto   != null) descTexto.text   = usaControle ? DescsControle[idx] : DescsTeclado[idx];
 
         if (textoFechar != null)
             textoFechar.text = usaControle
                 ? "Pressione △ / Y para fechar"
                 : "Pressione F ou Espaço para fechar";
 
-        // ícone da tecla
         if (iconeTecla != null)
         {
             Sprite[] icones = usaControle ? iconesGamepad : iconesKeyboard;
@@ -264,9 +234,6 @@ public class TutorialManager : MonoBehaviour
     }
 
     // ══════════════════════════════════════════════════
-    // PLAYERPREFS
-    // ══════════════════════════════════════════════════
-
     bool JaFoiVisto(TutorialStep step) =>
         PlayerPrefs.GetInt(PREFS_KEY + (int)step, 0) == 1;
 

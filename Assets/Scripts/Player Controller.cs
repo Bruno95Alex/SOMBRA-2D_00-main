@@ -38,6 +38,7 @@ public class PlayerController : Singleton<PlayerController>
     private Vector2 lastDirection = Vector2.right;
 
     private bool isDead = false;
+    private bool movementLocked = false;
 
     [SerializeField] private float deathDuration = 1.5f;
     [SerializeField] private float reviveDuration = 1f;
@@ -64,13 +65,7 @@ public class PlayerController : Singleton<PlayerController>
     }
 
     private void OnEnable()  { playerControls.Enable(); }
-    // private void OnDisable() { playerControls.Disable(); }
-
-    private void OnDisable()
-{
-    if (playerControls != null)
-        playerControls.Disable();
-}
+    private void OnDisable() { playerControls.Disable(); }
 
     // =========================
     // UPDATE
@@ -79,6 +74,7 @@ public class PlayerController : Singleton<PlayerController>
     private void Update()
     {
         if (isDead) return;
+        if (movementLocked) return;
         if (PauseMenu.Instance != null && PauseMenu.Instance.EstaPausado()) return;
 
         PlayerInput();
@@ -91,6 +87,7 @@ public class PlayerController : Singleton<PlayerController>
     private void FixedUpdate()
     {
         if (isDead) return;
+        if (movementLocked) return;
 
         Move();
         AdjustPlayerFacingDirection();
@@ -249,6 +246,25 @@ public class PlayerController : Singleton<PlayerController>
     // =========================
     // MORTE COM FADE
     // =========================
+
+    /// <summary>Bloqueia ou desbloqueia o movimento do player (usado pelo ShadowScareTrigger e Tutorial).</summary>
+    public void SetMovementLocked(bool locked)
+    {
+        movementLocked = locked;
+        if (locked)
+        {
+            movement = Vector2.zero;
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+            if (myAnimator != null)
+            {
+                myAnimator.SetFloat("moveX", 0f);
+                myAnimator.SetFloat("moveY", 0f);
+            }
+        }
+    }
+
+    public bool IsMovementLocked => movementLocked;
+    public bool IsAlive => !isDead;
 
     public void Die()
     {
