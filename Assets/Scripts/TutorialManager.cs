@@ -57,20 +57,20 @@ public class TutorialManager : MonoBehaviour
 
     private static readonly string[] DescsTeclado = {
         "Use <b>WASD</b> ou as <b>Setas</b>\npara mover o personagem.",
-        "Pressione <b>E</b> para ligar\ne desligar a lanterna.\nAponte com o <b>mouse</b>.",
+        "Pressione <b>E</b> para ligar e desligar a lanterna.\nAponte com o <b>mouse</b>.",
         "Chegue perto do item\ne pressione <b>F</b> para coletar.",
-        "Pressione <b>F</b> para interagir\ncom objetos e personagens.",
-        "Pressione <b>Espaço</b> para pular.\nUse o pulo para passar\npor cima de obstáculos.",
+        "Pressione <b>F</b> para interagir com objetos e personagens.",
+        "Pressione <b>Espaço</b> para pular.\nUse o pulo para passar por cima de obstáculos.",
         "Uma mancha escura vai aparecer\nonde você está!\n<b>Saia de dentro dela</b> antes\nque fique preta — ou você morre.",
     };
 
     private static readonly string[] DescsControle = {
         "Use o <b>analógico esquerdo</b>\nou o <b>D-pad</b> para mover.",
-        "Pressione <b>□ / X</b> para ligar\ne desligar a lanterna.\nAponte com o <b>analógico direito</b>.",
+        "Pressione <b>□ / X</b> para ligar e desligar a lanterna.\nAponte com o <b>analógico direito</b>.",
         "Chegue perto do item\ne pressione <b>△ / Y</b> para coletar.",
-        "Pressione <b>△ / Y</b> para interagir\ncom objetos e personagens.",
+        "Pressione <b>△ / Y</b> para interagir com objetos e personagens.",
         "Pressione <b>✕ / A</b> para pular.\nUse o pulo para passar\npor cima de obstáculos.",
-        "Uma mancha escura vai aparecer\nonde você está!\n<b>Saia de dentro dela</b> antes\nque fique preta — ou você morre.",
+        "Uma mancha escura vai aparecer onde você está!\n<b>Saia de dentro dela</b> antes que fique preta — ou você morre.",
     };
 
     // ══════════════════════════════════════════════════

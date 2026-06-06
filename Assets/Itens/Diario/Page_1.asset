@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9232e1cd1d356b4d8f56cb8630cd7f1, type: 3}
+  m_Name: Page_1
+  m_EditorClassIdentifier: 
+  itemName: Pag-1
+  icon: {fileID: 2677917561952771192, guid: 7bc2cd116c50e2d41aa9015bb9764760, type: 3}
+  description: "\"Eu n\xE3o deveria ter mexido nisso.\r\nEncontrei este di\xE1rio
+    escondido entre livros antigos da biblioteca, como se algu\xE9m tivesse tentado
+    escond\xEA-lo\u2026 ou esquec\xEA-lo.\r\nA capa tem o desenho de uma coisa\u2026
+    humanoide, mas errada. Feita de pura escurid\xE3o. N\xE3o reflete luz\u2026 ela
+    engole.\r\nS\xF3 os olhos aparecem. Duas luzes brancas. Fixas. Observando.\r\nN\xE3o
+    sei quem escreveu isso\u2026 mas tenho a sensa\xE7\xE3o de que isso n\xE3o \xE9
+    uma boa hist\xF3ria.\"\r\n"
+  isDiaryPage: 1
+  isKey: 0
+  isBattery: 0

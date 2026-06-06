@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9232e1cd1d356b4d8f56cb8630cd7f1, type: 3}
+  m_Name: Page_3
+  m_EditorClassIdentifier: 
+  itemName: Pag-2
+  icon: {fileID: 6352916738234894273, guid: 7bc2cd116c50e2d41aa9015bb9764760, type: 3}
+  description: "\"Eu entendi tarde demais.\r\nA Sombra n\xE3o veio de fora. Ela nunca
+    veio.\r\nEla nasceu aqui.\r\nCresceu em sil\xEAncio\u2026 alimentada por medo,
+    inseguran\xE7a, pensamentos que evitamos encarar.\r\nQuanto mais escuro o ambiente\u2026
+    mais forte ela fica.\r\nE quanto mais voc\xEA sente medo\u2026 mais perto ela
+    chega.\"\r"
+  isDiaryPage: 1
+  isKey: 0
+  isBattery: 0

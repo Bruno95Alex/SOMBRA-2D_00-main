@@ -17,14 +17,18 @@ public class ShadowPoolInstance : MonoBehaviour
     [SerializeField] private SpriteRenderer   spriteRenderer;
     [SerializeField] private CircleCollider2D col;
 
-    private static readonly Color COR_AVISO   = new Color(0.3f,  0f,  0.5f, 0.55f);
-    private static readonly Color COR_PERIGO  = new Color(0.05f, 0f,  0.1f, 0.85f);
+    private static readonly Color COR_AVISO  = new Color(0.3f,  0f,  0.5f, 0.55f);
+    private static readonly Color COR_PERIGO = new Color(0.05f, 0f,  0.1f, 0.85f);
+
+    // flag que impede dano após desativação
+    private bool desativada = false;
 
     void Awake()
     {
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         if (col            == null) col            = GetComponent<CircleCollider2D>();
 
+        // collider começa desativado — só liga na fase de perigo
         if (col != null) col.enabled = false;
 
         SetAlpha(0f);
@@ -37,6 +41,21 @@ public class ShadowPoolInstance : MonoBehaviour
                                    duracaoSumindo, escalaInicial, escalaFinal));
     }
 
+    /// <summary>
+    /// Desativa imediatamente o collider e inicia o fade out.
+    /// Chamado pelo ShadowPoolSpawner ao limpar as poças.
+    /// </summary>
+    public void DesativarImediatamente()
+    {
+        desativada = true;
+
+        // desativa collider ANTES de qualquer outra coisa
+        if (col != null) col.enabled = false;
+
+        StopAllCoroutines();
+        StartCoroutine(FadeOutEDestruir(0.3f));
+    }
+
     IEnumerator CicloDeVida(float duracaoAviso, float duracaoPerigo,
                              float duracaoSumindo, float escalaInicial, float escalaFinal)
     {
@@ -47,6 +66,8 @@ public class ShadowPoolInstance : MonoBehaviour
         float t = 0f;
         while (t < duracaoAviso)
         {
+            if (desativada) yield break;
+
             t += Time.deltaTime;
             float progresso = t / duracaoAviso;
 
@@ -61,6 +82,8 @@ public class ShadowPoolInstance : MonoBehaviour
             yield return null;
         }
 
+        if (desativada) yield break;
+
         // ── FASE 2: PERIGO — preta, collider ativo ──
         if (col != null) col.enabled = true;
         transform.localScale = Vector3.one * escalaFinal;
@@ -68,6 +91,8 @@ public class ShadowPoolInstance : MonoBehaviour
         t = 0f;
         while (t < duracaoPerigo)
         {
+            if (desativada) yield break;
+
             t += Time.deltaTime;
             float pulse = 0.85f + 0.15f * Mathf.Sin(t * Mathf.PI * 1.5f);
             if (spriteRenderer != null)
@@ -76,15 +101,22 @@ public class ShadowPoolInstance : MonoBehaviour
             yield return null;
         }
 
-        // ── FASE 3: SUMINDO — fade out ──
+        if (desativada) yield break;
+
+        // ── FASE 3: SUMINDO — fade out natural ──
         if (col != null) col.enabled = false;
 
+        yield return StartCoroutine(FadeOutEDestruir(duracaoSumindo));
+    }
+
+    IEnumerator FadeOutEDestruir(float duracao)
+    {
         Color corAtual = spriteRenderer != null ? spriteRenderer.color : Color.black;
-        t = 0f;
-        while (t < duracaoSumindo)
+        float t = 0f;
+        while (t < duracao)
         {
             t += Time.deltaTime;
-            float alpha = Mathf.Lerp(corAtual.a, 0f, t / duracaoSumindo);
+            float alpha = Mathf.Lerp(corAtual.a, 0f, t / duracao);
             if (spriteRenderer != null)
                 spriteRenderer.color = new Color(corAtual.r, corAtual.g, corAtual.b, alpha);
             yield return null;
@@ -95,6 +127,8 @@ public class ShadowPoolInstance : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
+        // double-check: não mata se já desativada
+        if (desativada) return;
         if (!other.CompareTag("Player")) return;
         if (PlayerController.Instance != null)
             PlayerController.Instance.Die();
@@ -104,7 +138,7 @@ public class ShadowPoolInstance : MonoBehaviour
     {
         if (spriteRenderer == null) return;
         Color c = spriteRenderer.color;
-        c.a     = a;
+        c.a = a;
         spriteRenderer.color = c;
     }
 }
