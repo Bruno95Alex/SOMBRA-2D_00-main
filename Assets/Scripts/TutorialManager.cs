@@ -21,6 +21,8 @@ public class TutorialManager : MonoBehaviour
         Interagir    = 3,
         Pulo         = 4,
         PocaDeSombra = 5,
+        Inventario   = 6,
+        SombraNoChao = 7,
     }
 
     // ── Inspector ──────────────────────────────────────
@@ -32,7 +34,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoFechar;
 
     [Header("Ícones das teclas (arraste na ordem do enum)")]
-    [SerializeField] private Sprite[] iconesKeyboard;   // 6 sprites: Movimento, Lanterna, Coletar, Interagir, Pulo, PocaDeSombra
+    [SerializeField] private Sprite[] iconesKeyboard;   // 8 sprites: Movimento, Lanterna, Coletar, Interagir, Pulo, PocaDeSombra, Inventario, SombraNoChao
     [SerializeField] private Sprite[] iconesGamepad;    // mesma ordem
 
     [Header("Configuração")]
@@ -53,24 +55,30 @@ public class TutorialManager : MonoBehaviour
         "Interagir",
         "Pulo",
         "Poça de Sombra",
+        "Inventário",
+        "Perigo!",
     };
 
     private static readonly string[] DescsTeclado = {
         "Use <b>WASD</b> ou as <b>Setas</b>\npara mover o personagem.",
-        "Pressione <b>E</b> para ligar e desligar a lanterna.\nAponte com o <b>mouse</b>.",
+        "Pressione <b>E</b> para ligar\ne desligar a lanterna.\nAponte com o <b>mouse</b>.",
         "Chegue perto do item\ne pressione <b>F</b> para coletar.",
-        "Pressione <b>F</b> para interagir com objetos e personagens.",
-        "Pressione <b>Espaço</b> para pular.\nUse o pulo para passar por cima de obstáculos.",
+        "Pressione <b>F</b> para interagir\ncom objetos e personagens.",
+        "Pressione <b>Espaço</b> para pular.\nUse o pulo para passar\npor cima de obstáculos.",
         "Uma mancha escura vai aparecer\nonde você está!\n<b>Saia de dentro dela</b> antes\nque fique preta — ou você morre.",
+        "Pressione <b>I</b> para abrir\ne fechar o inventário.\nVeja os itens que você coletou.",
+        "Manchas de sombra no chão!\n<b>Nunca encoste nelas.</b>\nPule ou contorne — qualquer\ncontato é morte instantânea.",
     };
 
     private static readonly string[] DescsControle = {
         "Use o <b>analógico esquerdo</b>\nou o <b>D-pad</b> para mover.",
-        "Pressione <b>□ / X</b> para ligar e desligar a lanterna.\nAponte com o <b>analógico direito</b>.",
+        "Pressione <b>□ / X</b> para ligar\ne desligar a lanterna.\nAponte com o <b>analógico direito</b>.",
         "Chegue perto do item\ne pressione <b>△ / Y</b> para coletar.",
-        "Pressione <b>△ / Y</b> para interagir com objetos e personagens.",
+        "Pressione <b>△ / Y</b> para interagir\ncom objetos e personagens.",
         "Pressione <b>✕ / A</b> para pular.\nUse o pulo para passar\npor cima de obstáculos.",
-        "Uma mancha escura vai aparecer onde você está!\n<b>Saia de dentro dela</b> antes que fique preta — ou você morre.",
+        "Uma mancha escura vai aparecer\nonde você está!\n<b>Saia de dentro dela</b> antes\nque fique preta — ou você morre.",
+        "Pressione <b>⃝ / B</b> para abrir\ne fechar o inventário.\nVeja os itens que você coletou.",
+        "Manchas de sombra no chão!\n<b>Nunca encoste nelas.</b>\nPule ou contorne — qualquer\ncontato é morte instantânea.",
     };
 
     // ══════════════════════════════════════════════════
@@ -105,15 +113,14 @@ public class TutorialManager : MonoBehaviour
             : UnityEngine.InputSystem.Keyboard.current != null &&
               (UnityEngine.InputSystem.Keyboard.current.fKey.wasPressedThisFrame ||
                UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame);
-
         if (fechar)
             FecharPopup();
     }
 
     void Start()
-{
-    ResetarTutorial(); // remova depois dos testes
-}
+    {
+        ResetarTutorial(); // remova depois dos testes
+    }
 
     // ══════════════════════════════════════════════════
     // API PÚBLICA
@@ -215,7 +222,7 @@ public class TutorialManager : MonoBehaviour
 
         if (textoFechar != null)
             textoFechar.text = usaControle
-                ? "Pressione △ / Y para fechar"
+                ? "Pressione ✕ / A para fechar"
                 : "Pressione F ou Espaço para fechar";
 
         if (iconeTecla != null)

@@ -1,10 +1,55 @@
 fileFormatVersion: 2
-guid: 3c3c029665536e74284a68f401737421
+guid: 77bedb6430423cb49a367ba8548715e3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1992995832452714522
-    second: Controles_0
+      213: -4316626832957116748
+    second: "Po\xE7asNew_0"
+  - first:
+      213: 2147797057094275066
+    second: "Po\xE7asNew_1"
+  - first:
+      213: -843875721088613534
+    second: "Po\xE7asNew_2"
+  - first:
+      213: 904694441515146472
+    second: "Po\xE7asNew_3"
+  - first:
+      213: -5450820019774202498
+    second: "Po\xE7asNew_4"
+  - first:
+      213: 2493477800474772121
+    second: "Po\xE7asNew_5"
+  - first:
+      213: -5605329489743357363
+    second: "Po\xE7asNew_6"
+  - first:
+      213: -5496595204435153983
+    second: "Po\xE7asNew_7"
+  - first:
+      213: -7531274890456788602
+    second: "Po\xE7asNew_8"
+  - first:
+      213: -8166411203928354663
+    second: "Po\xE7asNew_9"
+  - first:
+      213: -437141976051246898
+    second: "Po\xE7asNew_10"
+  - first:
+      213: 8293755534400343089
+    second: "Po\xE7asNew_11"
+  - first:
+      213: -6606632167701346686
+    second: "Po\xE7asNew_12"
+  - first:
+      213: -4362134435035410844
+    second: "Po\xE7asNew_13"
+  - first:
+      213: 2766663200291773277
+    second: "Po\xE7asNew_14"
+  - first:
+      213: 3557751409447908971
+    second: "Po\xE7asNew_15"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +96,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +145,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: movi
+      name: "Po\xE7asNew_0"
       rect:
         serializedVersion: 2
-        x: 179
-        y: 555
-        width: 444
-        height: 243
+        x: 108
+        y: 300
+        width: 294
+        height: 342
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,228 +160,140 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ef62d789d47754e0800000000000000
-      internalID: -1992995832452714522
+      spriteID: 4beeba114c24814c0800000000000000
+      internalID: -4316626832957116748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: x
+      name: "Po\xE7asNew_1"
       rect:
         serializedVersion: 2
-        x: 93
-        y: 288
-        width: 413
-        height: 69
+        x: 467
+        y: 674
+        width: 127
+        height: 97
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4e7ad30b239e4ec42b4b2ee4e4543f32
-      internalID: 1950738018
+      spriteID: affcbbd3b028ecd10800000000000000
+      internalID: 2147797057094275066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: quadr
+      name: "Po\xE7asNew_5"
       rect:
         serializedVersion: 2
-        x: 95
-        y: 237
-        width: 413
-        height: 50
+        x: 993
+        y: 351
+        width: 346
+        height: 262
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fcf92c1fa6812214686b5fd89afe7955
-      internalID: 1820968734
+      spriteID: 9920f9839dc9a9220800000000000000
+      internalID: 2493477800474772121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: triang
+      name: "Po\xE7asNew_6"
       rect:
         serializedVersion: 2
-        x: 92
-        y: 175
-        width: 428
-        height: 60
+        x: 1461
+        y: 283
+        width: 180
+        height: 377
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d014da0177388e84fb67827e6b13ccd1
-      internalID: 1640637715
+      spriteID: d4a53d2078ed532b0800000000000000
+      internalID: -5605329489743357363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bola
+      name: "Po\xE7asNew_7"
       rect:
         serializedVersion: 2
-        x: 90
-        y: 111
-        width: 411
-        height: 61
+        x: 608
+        y: 269
+        width: 266
+        height: 324
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ea6783649a40e6141a54c81a89442476
-      internalID: -1703764558
+      spriteID: 1cbe685a8cb28b3b0800000000000000
+      internalID: -5496595204435153983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: start
+      name: "Po\xE7asNew_12"
       rect:
         serializedVersion: 2
-        x: 90
-        y: 54
-        width: 383
-        height: 60
+        x: 1191
+        y: 345
+        width: 9
+        height: 9
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 068c28cf5ce5fbd41b4ce17cdd36c2ed
-      internalID: 1482731085
+      spriteID: 2860e720c078054a0800000000000000
+      internalID: -6606632167701346686
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E
+      name: "Po\xE7asNew_13"
       rect:
         serializedVersion: 2
-        x: 824
-        y: 396
-        width: 431
-        height: 78
+        x: 1201
+        y: 348
+        width: 15
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3506dabf57e20bc409a5fb7cd38d21d6
-      internalID: -1341172993
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: F
-      rect:
-        serializedVersion: 2
-        x: 823
-        y: 308
-        width: 495
-        height: 82
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 31766bcced80a6e42b6d0f3c80ee1b92
-      internalID: 1643883763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: I
-      rect:
-        serializedVersion: 2
-        x: 821
-        y: 223
-        width: 484
-        height: 83
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee4df2667740c694a9993862a78dda6b
-      internalID: -733030031
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Espa\xE7o"
-      rect:
-        serializedVersion: 2
-        x: 820
-        y: 137
-        width: 558
-        height: 89
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34081e129eed1764fa30addec318a1ae
-      internalID: -1768338695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Esc
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 41
-        width: 439
-        height: 93
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c9e63ea9aad43043955435ae4342c80
-      internalID: 1765835631
+      spriteID: 46e0739c7d59673c0800000000000000
+      internalID: -4362134435035410844
       vertices: []
       indices: 
       edges: []
@@ -345,7 +302,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: aa66e26c36eb56140bdee45063b996f5
+    spriteID: 367485fcebe7f5447a9fd80b4056ba80
     internalID: 0
     vertices: []
     indices: 
@@ -353,21 +310,26 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Controles_1: 928584462
-      Controles_2: -1528192856
-      E: -1341172993
-      Esc: 1765835631
-      "Espa\xE7o": -1768338695
-      F: 1643883763
-      I: -733030031
-      bola: -1703764558
-      movi: -1992995832452714522
-      quadr: 1820968734
-      start: 1482731085
-      triang: 1640637715
-      x: 1950738018
+      "Po\xE7asNew_0": -4316626832957116748
+      "Po\xE7asNew_1": 2147797057094275066
+      "Po\xE7asNew_10": -437141976051246898
+      "Po\xE7asNew_11": 8293755534400343089
+      "Po\xE7asNew_12": -6606632167701346686
+      "Po\xE7asNew_13": -4362134435035410844
+      "Po\xE7asNew_14": 2766663200291773277
+      "Po\xE7asNew_15": 3557751409447908971
+      "Po\xE7asNew_2": -843875721088613534
+      "Po\xE7asNew_3": 904694441515146472
+      "Po\xE7asNew_4": -5450820019774202498
+      "Po\xE7asNew_5": 2493477800474772121
+      "Po\xE7asNew_6": -5605329489743357363
+      "Po\xE7asNew_7": -5496595204435153983
+      "Po\xE7asNew_8": -7531274890456788602
+      "Po\xE7asNew_9": -8166411203928354663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

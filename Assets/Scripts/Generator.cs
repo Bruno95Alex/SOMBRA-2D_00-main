@@ -32,6 +32,7 @@ public class Generator : MonoBehaviour
 
     [Header("Vitória")]
     [SerializeField] private float delayVitoria = 2f;
+    [SerializeField] private EndingManager endingManager;
 
     // ================================
     // ESTADO
@@ -158,12 +159,22 @@ public class Generator : MonoBehaviour
         // iluminação acende gradualmente — simula luzes ligando
         yield return StartCoroutine(AcenderLuzes());
 
-        UIMessage.Instance.Show("⚡ Energia restaurada! Corra para a saída!", 4f);
-
+        // aguarda o delay curto após as luzes acenderem
         yield return new WaitForSeconds(delayVitoria);
 
-        // TODO: VictoryManager.Instance.Win();
-        Debug.Log("GERADOR LIGADO — acionar vitória aqui");
+        // inicia a sequência de encerramento
+        if (endingManager != null)
+        {
+            endingManager.IniciarEncerramento();
+        }
+        else if (EndingManager.Instance != null)
+        {
+            EndingManager.Instance.IniciarEncerramento();
+        }
+        else
+        {
+            Debug.LogError("[Generator] EndingManager não encontrado! Conecte no Inspector.");
+        }
     }
 
     IEnumerator AcenderLuzes()
